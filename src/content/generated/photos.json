@@ -1,0 +1,125 @@
+{
+  "projects": [
+    {
+      "slug": "spot-colouring-project",
+      "title": "Spot Colouring",
+      "subject": "Photography",
+      "order": 0,
+      "cover": "1",
+      "photos": [
+        {
+          "id": "1",
+          "file": "1.jpg",
+          "alt": "A great tit looks out of the round entrance of a grey wooden birdhouse; only the bird is in colour, the rest of the scene in black and white.",
+          "w": 2979,
+          "h": 1976,
+          "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwBACdASoYABAAPxFwsFAsJiSisAgBgCIJaQDMHCHrUiMSbonQctSZCugA/uMULixdD0QJmGPRtSdxig9+Ta6djtLC1NPLSxhrEXWYc6iNHeEcxFBWv3imVB7w3IAA",
+          "color": "#888888",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/1-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/1-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/1-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/1-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/1-2400.webp"
+        },
+        {
+          "id": "2",
+          "file": "2.jpg",
+          "alt": "A great tit in flight beside a hanging birdhouse on a pine trunk; only its yellow breast is in colour.",
+          "w": 3456,
+          "h": 5184,
+          "blur": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAADwBQCdASoYACQAPxF8tFQsJ6SjJWzJgCIJaQAAnfDBSzO32T7fBkLpyPDtrK/+zVUKOIFtbVMwIAD+7t2Fk3GeGMXsKcCRrUISt4kVZmqvlZDIeLBEzPam+3+SQbx75VwJp5EkEUoZX19vXy/szwW4WgF9Xwg9iDBYkd1Wf+detuhEAAA=",
+          "color": "#181818",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/2-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/2-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/2-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/2-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/2-2400.webp"
+        },
+        {
+          "id": "3",
+          "file": "3.jpg",
+          "alt": "Black-and-white silhouette of a lighthouse at the end of a rocky pier, with two figures and benches beneath a tall twin-pole mast.",
+          "w": 3399,
+          "h": 5099,
+          "blur": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABwBQCdASoYACQAPxGEtlUsKKSjKrgIAYAiCWkAAP4g4uAf6a/Rxrvu7HQhGIvtNsdQLNKAAP7q2ASTTyaHy8AIBnm+sFaiLpn1J0qh+NwpH1E6o7DuRld4tuwJLpR0WuZh5hVjXuE0KFCFj+V0MpTSzAAAAA==",
+          "color": "#d8d8d8",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/3-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/3-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/3-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/3-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/3-2400.webp"
+        },
+        {
+          "id": "4",
+          "file": "4.jpg",
+          "alt": "A gull in flight against a pale sky with a few wisps of cloud, in black and white.",
+          "w": 5184,
+          "h": 3456,
+          "blur": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAADQAgCdASoYABAAPxF0sVA/pySisAgD8CIJaQAAfj4AAOQ+6wrUNjqStxQcAAAA",
+          "color": "#888888",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/4-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/4-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/4-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/4-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/4-2400.webp"
+        }
+      ]
+    }
+  ]
+}

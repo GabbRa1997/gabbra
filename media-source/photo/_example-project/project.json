@@ -1,0 +1,11 @@
+{
+  "title": "Project title",
+  "subject": "Portrait | Landscape | Street | ...",
+  "year": 2026,
+  "description": "A few sentences about the project.",
+  "cover": "01-first-photo.jpg",
+  "alts": { "01-first-photo.jpg": "A short description of what the photo shows, for screen readers." },
+  "prints": [
+    { "file": "01-first-photo.jpg", "sizes": "30 x 45 cm, 50 x 75 cm", "paper": "Fine-art cotton rag", "edition": "Edition of 25", "price": "On request" }
+  ]
+}

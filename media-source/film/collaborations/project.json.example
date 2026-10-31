@@ -1,0 +1,11 @@
+{
+  "title": "Clip title",
+  "year": 2026,
+  "synopsis": "A few sentences about the piece.",
+  "runtime": "1:00",
+  "format": "Built from photographs",
+  "credits": [
+    { "role": "Photography", "name": "Your name" },
+    { "role": "Collaborator", "name": "Their name" }
+  ]
+}
