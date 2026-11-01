@@ -1,10 +1,10 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, Lightformer, OrbitControls, PerformanceMonitor, Sparkles } from "@react-three/drei";
+import { Environment, Lightformer, OrbitControls, PerformanceMonitor, Sparkles, TrackballControls } from "@react-three/drei";
 import { Suspense, useEffect, useMemo, useRef, useState, type MutableRefObject, type ReactElement } from "react";
 import * as THREE from "three";
-import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
+import type { OrbitControls as OrbitControlsImpl, TrackballControls as TrackballControlsImpl } from "three-stdlib";
 import { detail } from "./detail";
 import PartGroup from "./PartGroup";
 import { SceneCtx, type PartLike, type SceneState } from "./sceneContext";
@@ -86,7 +86,7 @@ function Rig({
   state: MutableRefObject<SceneState>;
   registry: Map<string, THREE.Vector3>;
   portrait: boolean;
-  controls: MutableRefObject<OrbitControlsImpl | null>;
+  controls: MutableRefObject<OrbitControlsImpl | TrackballControlsImpl | null>;
   focusById: Record<string, number>;
   frame: SceneConfig["frame"];
 }) {
@@ -148,7 +148,7 @@ function Rig({
  */
 function DragGate() {
   const events = useThree((s) => s.events);
-  const controls = useThree((s) => s.controls) as unknown as OrbitControlsImpl | null;
+  const controls = useThree((s) => s.controls) as unknown as (OrbitControlsImpl | TrackballControlsImpl) | null;
   useEffect(() => {
     if (!controls) return;
     const start = () => void (events.enabled = false);
@@ -189,7 +189,7 @@ export default function ExplodedScene(props: SceneProps & SceneConfig) {
   const registry = useMemo(() => new Map<string, THREE.Vector3>(), []);
   const asm = useRef<THREE.Group | null>(null);
   const float = useRef<THREE.Group | null>(null);
-  const controls = useRef<OrbitControlsImpl | null>(null);
+  const controls = useRef<OrbitControlsImpl | TrackballControlsImpl | null>(null);
   // Resolution steps: start sharp, give a little back only when the frame rate really suffers,
   // and win it back when it recovers. Phones start high because their screens are dense.
   const tiers = quality === "full" ? DPR_FULL : DPR_LITE;
@@ -275,19 +275,35 @@ export default function ExplodedScene(props: SceneProps & SceneConfig) {
           color={palette.sparkle}
         />
 
-        <OrbitControls
-          ref={controls as MutableRefObject<OrbitControlsImpl>}
-          makeDefault
-          enablePan={false}
-          enableDamping
-          dampingFactor={0.08}
-          rotateSpeed={0.7}
-          zoomSpeed={0.7}
-          minDistance={4}
-          maxDistance={190}
-          minPolarAngle={0.3}
-          maxPolarAngle={Math.PI - 0.3}
-        />
+        {upright ? (
+          // Stood on its end the camera needs to tumble freely, front to back as well as around;
+          // an orbit would only ever spin it like a turntable.
+          <TrackballControls
+            ref={controls as unknown as MutableRefObject<TrackballControlsImpl>}
+            makeDefault
+            noPan
+            rotateSpeed={2.6}
+            zoomSpeed={1.1}
+            staticMoving={false}
+            dynamicDampingFactor={0.12}
+            minDistance={4}
+            maxDistance={190}
+          />
+        ) : (
+          <OrbitControls
+            ref={controls as MutableRefObject<OrbitControlsImpl>}
+            makeDefault
+            enablePan={false}
+            enableDamping
+            dampingFactor={0.08}
+            rotateSpeed={0.7}
+            zoomSpeed={0.7}
+            minDistance={4}
+            maxDistance={190}
+            minPolarAngle={0.3}
+            maxPolarAngle={Math.PI - 0.3}
+          />
+        )}
       </SceneCtx.Provider>
     </Canvas>
   );
