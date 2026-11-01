@@ -36,7 +36,7 @@ export default function Privacy() {
 
         <h2 className="t-wide pt-4 text-[1.6rem] text-bone">Everything else</h2>
         <p>
-          There are no adverts and no other trackers. The contact form opens your own email app with the message ready to
+          Films and flight reels are played by YouTube or Vimeo, which may set their own cookies once you press play. There are no adverts and no other trackers. The contact form opens your own email app with the message ready to
           send, so nothing you type is stored on this site. The site is hosted by GitHub Pages, which, like any web host,
           may keep technical logs such as IP addresses.
         </p>

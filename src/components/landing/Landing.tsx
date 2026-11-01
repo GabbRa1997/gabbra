@@ -51,6 +51,8 @@ export default function Landing() {
     const hubItems = ".hub-item";
     if (stage === "hub" && !started.current) {
       gsap.set(stageEl.current, { "--p": 125 });
+      // the warm light that follows the pointer fades in too, or it would stay hidden on a return visit
+      gsap.to(".glow-base", { opacity: 1, duration: 1.4, ease: "power2.out" });
       gsap.fromTo(
         [hubItems, ".reveal-late"],
         { opacity: 0, y: 12 },
@@ -63,7 +65,7 @@ export default function Landing() {
     if (reduced) {
       gsap.set(stageEl.current, { "--p": 125 });
       gsap.fromTo(
-        [".logo-img", hubItems, ".reveal-late"],
+        [".logo-img", ".glow-base", hubItems, ".reveal-late"],
         { opacity: 0 },
         { opacity: 1, duration: 0.8, onComplete: () => setStage("hub") },
       );
@@ -242,7 +244,7 @@ export default function Landing() {
                     </span>
                     <span
                       aria-hidden
-                      className="t-label hidden translate-x-[-6px] text-[var(--tint)] opacity-0 lg:inline transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+                      className="t-label hidden translate-x-[-6px] whitespace-nowrap text-[var(--tint)] opacity-0 xl:inline transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
                     >
                       Enter →
                     </span>

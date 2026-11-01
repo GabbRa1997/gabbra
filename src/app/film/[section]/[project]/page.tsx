@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import FilmPlayer from "@/components/film/FilmPlayer";
+import VideoEmbed from "@/components/film/VideoEmbed";
 import { PageFrame, Placeholder } from "@/components/shell/PageFrame";
 import TLink from "@/components/shell/TLink";
 import { FILM_SECTIONS, sectionBySlug } from "@/content/film";
@@ -28,7 +29,11 @@ export default async function FilmProjectPage({ params }: { params: Promise<Para
 
   return (
     <PageFrame tint="#e6b980" eyebrow={`03 / Film — ${s.title} — ${p.code}`} title={p.title} lead={p.synopsis}>
-      <FilmPlayer title={p.title} code={p.code} src={p.src} poster={p.poster} />
+      {p.embed ? (
+        <VideoEmbed url={p.embed} title={p.title} />
+      ) : (
+        <FilmPlayer title={p.title} code={p.code} src={p.src} poster={p.poster} />
+      )}
 
       <div className="mt-16 grid gap-16 md:grid-cols-2">
         <section aria-labelledby="production">

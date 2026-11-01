@@ -23,12 +23,15 @@ export default function FilmHub() {
         hue: 8 + ((i * 37) % 40),
         poster: p.poster,
         src: p.src,
+        embed: !!p.embed,
       })),
     [],
   );
 
   // chapter n starts at its first frame in the strip
-  const stops = FILM_SECTIONS.map((_, i) => (i * 3) / items.length);
+  const stops = FILM_SECTIONS.map(
+    (_, i) => FILM_SECTIONS.slice(0, i).reduce((n, x) => n + x.projects.length, 0) / items.length,
+  );
 
   // the timeline thumb follows the strip as it travels
   useEffect(() => {

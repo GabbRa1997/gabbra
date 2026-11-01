@@ -65,6 +65,7 @@ const LABELS: Record<string, string> = {
   film: "FILM",
   blog: "BLOG",
   privacy: "PRIVACY",
+  admin: "ADMIN",
   about: "ABOUT",
   artist: "WHO AM I?",
   contact: "CONTACT",

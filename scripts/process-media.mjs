@@ -6,6 +6,9 @@
  *   clips   → /public/media/film/<section>/<clip>/video.mp4 (+ poster)
  *   data    → /src/content/generated/{photos,film}.json
  *
+ * Photographs are now managed from gabbra.net/admin, so this script leaves them alone
+ * unless you run it with --photos (which REPLACES whatever the admin has published).
+ *
  * Run:  npm run media
  * The originals never leave the computer; only the optimised copies are published.
  */
@@ -203,7 +206,7 @@ async function clips() {
 
 await fs.mkdir(GEN, { recursive: true });
 console.log("Photographs");
-const p = await photos();
+const p = process.argv.includes("--photos") ? await photos() : [];
 console.log("Clips");
 const c = await clips();
 console.log(

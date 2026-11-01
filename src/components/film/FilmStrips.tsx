@@ -13,6 +13,8 @@ export interface StripItem {
   hue: number;
   poster?: string;
   src?: string;
+  /** a YouTube or Vimeo video: no hover preview */
+  embed?: boolean;
 }
 
 /** What the page can ask of the strips (for the timeline and the chapter list). */
@@ -35,7 +37,7 @@ function Frame({ item, hidden, onHover }: { item: StripItem; hidden: boolean; on
       href={item.href}
       tabIndex={-1}
       aria-hidden={hidden || undefined}
-      aria-label={item.src ? item.title : `${item.title} (placeholder)`}
+      aria-label={item.src || item.embed ? item.title : `${item.title} (placeholder)`}
       draggable={false}
       onPointerEnter={() => {
         setActive(true);
@@ -49,7 +51,7 @@ function Frame({ item, hidden, onHover }: { item: StripItem; hidden: boolean; on
       style={{
         width: "clamp(260px, 22vw, 400px)",
         aspectRatio: "2.39 / 1",
-        background: `linear-gradient(135deg, hsl( 22% 19%), hsl(${item.hue + 24} 18% 10%))`,
+        background: `linear-gradient(135deg, hsl(${item.hue} 22% 19%), hsl(${item.hue + 24} 18% 10%))`,
       }}
     >
       {item.poster && (
@@ -59,7 +61,7 @@ function Frame({ item, hidden, onHover }: { item: StripItem; hidden: boolean; on
       {active && item.src ? (
         <video src={item.src} autoPlay muted loop playsInline preload="none" className="absolute inset-0 h-full w-full object-cover" />
       ) : (
-        active && <Leader t={t} compact label="Preview · placeholder" />
+        active && !item.embed && <Leader t={t} compact label="Preview · placeholder" />
       )}
       <span className="t-label absolute left-3 top-2.5 text-[0.6rem] text-bone/55">{item.code}</span>
       <span className="t-label absolute bottom-2.5 left-3 text-[0.6rem] text-bone/35 transition-colors group-hover:text-film">

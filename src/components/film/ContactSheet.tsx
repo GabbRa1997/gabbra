@@ -34,7 +34,7 @@ function Tile({ href, project, index }: { href: string; project: FilmProject; in
             {active && project.src ? (
               <video src={project.src} autoPlay muted loop playsInline preload="none" className="absolute inset-0 h-full w-full object-cover" />
             ) : (
-              active && <Leader t={t} compact label="Preview · placeholder" />
+              active && !project.embed && <Leader t={t} compact label="Preview · placeholder" />
             )}
             <span className="t-label absolute left-4 top-3 text-[0.62rem] text-bone/55">{project.code}</span>
             {!active && (

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import TLink from "@/components/shell/TLink";
 import { PageFrame, Placeholder } from "@/components/shell/PageFrame";
-import { DRONE_SHEET_FIELDS, FPV_SECTIONS, type FpvSectionSlug } from "@/content/fpv";
+import VideoEmbed from "@/components/film/VideoEmbed";
+import { DRONE_SHEET_FIELDS, FPV_DRONES, FPV_REELS, FPV_SECTIONS, type FpvSectionSlug } from "@/content/fpv";
 
 type Params = { section: string };
 
@@ -41,6 +42,32 @@ export default async function FpvSectionPage({ params }: { params: Promise<Param
 
 function Body({ slug }: { slug: FpvSectionSlug }) {
   if (slug === "drones-owned") {
+    if (FPV_DRONES.length > 0) {
+      return (
+        <ul className="grid gap-x-8 gap-y-16 md:grid-cols-2">
+          {FPV_DRONES.map((d) => (
+            <li key={d.id}>
+              {d.photo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={d.photo} alt={d.name} loading="lazy" className="aspect-[4/3] w-full border border-line object-cover" />
+              ) : (
+                <Placeholder label={d.name} ratio="4 / 3" note="Placeholder — photo of the drone" />
+              )}
+              <h2 className="t-wide mt-5 text-[1.5rem] text-bone">{d.name}</h2>
+              {d.notes && <p className="mt-2 text-bone/60">{d.notes}</p>}
+              <dl className="mt-4 divide-y divide-line border-y border-line">
+                {DRONE_SHEET_FIELDS.map((f) => (
+                  <div key={f} className="flex items-baseline justify-between gap-6 py-3">
+                    <dt className="t-label text-steel">{f}</dt>
+                    <dd className={d.specs[f] ? "text-right text-bone" : "text-bone/35"}>{d.specs[f] || "To be supplied"}</dd>
+                  </div>
+                ))}
+              </dl>
+            </li>
+          ))}
+        </ul>
+      );
+    }
     return (
       <ul className="grid gap-x-8 gap-y-16 md:grid-cols-2">
         {["Drone 01", "Drone 02", "Drone 03"].map((n) => (
@@ -63,6 +90,21 @@ function Body({ slug }: { slug: FpvSectionSlug }) {
   }
 
   // flight reels
+  if (FPV_REELS.length > 0) {
+    return (
+      <div className="grid gap-10 sm:grid-cols-2">
+        {FPV_REELS.map((r, i) => (
+          <figure key={r.id} className={i === 0 ? "sm:col-span-2" : ""}>
+            <VideoEmbed url={r.url} title={r.title} />
+            <figcaption className="mt-4">
+              <span className="t-wide block text-[1.3rem] text-bone">{r.title}</span>
+              {r.description && <span className="mt-1 block text-bone/60">{r.description}</span>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    );
+  }
   return (
     <div className="grid gap-6 sm:grid-cols-2">
       {["Reel 01", "Reel 02", "Reel 03", "Reel 04"].map((n, i) => (

@@ -1,4 +1,5 @@
-import { FILM_CLIPS, type FilmClip } from "@/lib/media";
+import adminFilm from "@/content/admin/film.json";
+import { FILM_CLIPS } from "@/lib/media";
 
 /**
  * Film content. A section shows its real clips (from /media-source via `npm run media`)
@@ -28,6 +29,8 @@ export interface FilmProject {
   /** optional real video; when absent the player shows the leader placeholder */
   src?: string;
   poster?: string;
+  /** a YouTube or Vimeo link, set from /admin */
+  embed?: string;
   synopsis: string;
   details: { label: string; value: string }[];
   credits: Credit[];
@@ -44,6 +47,20 @@ export interface FilmSection {
 }
 
 const TBC = "To be supplied";
+
+/** films added from /admin: a YouTube or Vimeo link plus the details */
+interface AdminFilm {
+  section: string;
+  slug: string;
+  title: string;
+  url: string;
+  year?: number;
+  runtime?: string;
+  format?: string;
+  synopsis?: string;
+  credits?: Credit[];
+}
+const ADMIN_FILMS = (adminFilm as { items: AdminFilm[] }).items;
 
 const DEFS: {
   slug: FilmSectionSlug;
@@ -83,7 +100,7 @@ const DEFS: {
   },
 ];
 
-const detailsFor = (c?: FilmClip) => [
+const detailsFor = (c?: { year?: number; runtime?: string; format?: string }) => [
   { label: "Year", value: c?.year ? String(c.year) : TBC },
   { label: "Runtime", value: c?.runtime ?? TBC },
   { label: "Format", value: c?.format ?? TBC },
@@ -93,7 +110,15 @@ const detailsFor = (c?: FilmClip) => [
 ];
 
 export const FILM_SECTIONS: FilmSection[] = DEFS.map((d, si) => {
-  const clips = FILM_CLIPS.filter((c) => c.section === d.slug);
+  const clips = [
+    ...FILM_CLIPS.filter((c) => c.section === d.slug).map((c) => ({ ...c, embed: undefined as string | undefined })),
+    ...ADMIN_FILMS.filter((f) => f.section === d.slug).map((f) => ({
+      ...f,
+      src: undefined as string | undefined,
+      poster: undefined as string | undefined,
+      embed: f.url,
+    })),
+  ];
   const projects: FilmProject[] = clips.length
     ? clips.map((c, i) => ({
         slug: c.slug,
@@ -103,6 +128,7 @@ export const FILM_SECTIONS: FilmSection[] = DEFS.map((d, si) => {
         placeholder: false,
         src: c.src,
         poster: c.poster,
+        embed: c.embed,
         synopsis: c.synopsis ?? "Synopsis to be supplied.",
         details: detailsFor(c),
         credits: c.credits?.length ? c.credits : d.roles.map((role) => ({ role, name: TBC })),

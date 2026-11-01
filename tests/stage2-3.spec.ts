@@ -307,6 +307,7 @@ test.describe("Phone — descriptions pop up on the 3D view", () => {
   ] as const) {
     test(`${path}: hint first, then a card over the stage`, async ({ browser }) => {
       const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+      await ctx.addInitScript(() => localStorage.setItem("gabbra:consent", "denied")); // no cookie notice in the way
       const page = await ctx.newPage();
       await page.goto(path);
       await expect(page.locator("canvas")).toBeVisible({ timeout: 20_000 });
