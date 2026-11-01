@@ -4,6 +4,9 @@ import "./globals.css";
 import SoundProvider from "@/components/shell/SoundProvider";
 import TransitionProvider from "@/components/shell/TransitionProvider";
 import SiteHeader from "@/components/shell/SiteHeader";
+import Analytics from "@/components/shell/Analytics";
+import JsonLd from "@/components/shell/JsonLd";
+import { SITE, instagramUrl } from "@/content/site";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -23,7 +26,18 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gabbra.net"),
   title: { default: "GabbRa — Photo / FPV / Film", template: "%s — GabbRa" },
   description:
-    "GabbRa is an independent creative practice across photography, FPV and film. Reality, reframed.",
+    "GabbRa is an independent creative practice across photography, FPV drone flying and film. Reality, reframed.",
+  alternates: { canonical: "./" },
+  openGraph: {
+    type: "website",
+    siteName: "GabbRa",
+    locale: "en_GB",
+    title: "GabbRa — Photo / FPV / Film",
+    description: "An independent creative practice across photography, FPV and film. Reality, reframed.",
+    images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: "GabbRa" }],
+  },
+  twitter: { card: "summary_large_image", images: ["/brand/og.png"] },
+  ...(SITE.googleVerification ? { verification: { google: SITE.googleVerification } } : {}),
 };
 
 export const viewport: Viewport = {
@@ -41,6 +55,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebSite",
+                "@id": "https://gabbra.net/#site",
+                url: "https://gabbra.net/",
+                name: SITE.name,
+                description: "Photography, FPV and film. Reality, reframed.",
+                inLanguage: "en-GB",
+              },
+              {
+                "@type": "Person",
+                "@id": "https://gabbra.net/#person",
+                name: "Gabriel Octavian Tudosie",
+                alternateName: SITE.name,
+                url: "https://gabbra.net/",
+                jobTitle: "Photographer, FPV pilot and filmmaker",
+                email: `mailto:${SITE.email}`,
+                ...(instagramUrl ? { sameAs: [instagramUrl] } : {}),
+              },
+            ],
+          }}
+        />
+        <Analytics />
         <SoundProvider>
           <TransitionProvider>
             <SiteHeader />

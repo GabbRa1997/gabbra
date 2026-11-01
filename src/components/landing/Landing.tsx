@@ -212,12 +212,12 @@ export default function Landing() {
 
       {/* hub */}
       <nav
-        aria-label="Enter a discipline"
+        aria-label="Enter a section"
         className={`relative z-10 mx-auto w-full max-w-[1400px] px-5 pb-6 md:px-10 md:pb-9 ${
           ready ? "" : "pointer-events-none"
         }`}
       >
-        <ul className="grid grid-cols-1 md:grid-cols-3">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {DISCIPLINES.map((d) => {
             const dim = active && active !== d.id;
             return (
@@ -237,17 +237,17 @@ export default function Landing() {
                   }`}
                 >
                   <span className="flex items-baseline justify-between">
-                    <span className="t-label text-steel transition-colors group-hover:text-[var(--tint)] group-focus-visible:text-[var(--tint)]">
+                    <span className="t-label whitespace-nowrap text-steel transition-colors group-hover:text-[var(--tint)] group-focus-visible:text-[var(--tint)]">
                       {d.n} — {d.kicker}
                     </span>
                     <span
                       aria-hidden
-                      className="t-label translate-x-[-6px] text-[var(--tint)] opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+                      className="t-label hidden translate-x-[-6px] text-[var(--tint)] opacity-0 lg:inline transition-all duration-500 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
                     >
                       Enter →
                     </span>
                   </span>
-                  <span className="t-wide mt-3 block text-[clamp(2.25rem,5.6vw,5rem)] text-bone transition-colors duration-500 group-hover:text-[var(--tint)] group-focus-visible:text-[var(--tint)]">
+                  <span className="t-wide mt-3 block text-[clamp(2.25rem,4.4vw,4rem)] text-bone transition-colors duration-500 group-hover:text-[var(--tint)] group-focus-visible:text-[var(--tint)]">
                     {d.label}
                   </span>
                   <span className="mt-3 block text-sm text-bone/55 md:mt-4">{d.line}</span>
@@ -257,10 +257,10 @@ export default function Landing() {
                   />
                 </TLink>
                 {/* the slash: the R's diagonal, used as a divider */}
-                {d.id !== "film" && (
+                {d.id !== "blog" && (
                   <span
                     aria-hidden
-                    className="absolute right-0 top-6 hidden h-16 w-px origin-center -skew-x-[37deg] bg-line md:block"
+                    className="absolute right-0 top-6 hidden h-16 w-px origin-center -skew-x-[37deg] bg-line lg:block"
                   />
                 )}
               </li>
@@ -275,6 +275,9 @@ export default function Landing() {
             </TLink>
             <TLink href="/contact" variant="fade" className="hover:text-bone">
               Contact
+            </TLink>
+            <TLink href="/privacy" variant="fade" className="hover:text-bone">
+              Privacy
             </TLink>
           </span>
         </div>

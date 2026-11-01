@@ -3,12 +3,16 @@ import { PageFrame } from "@/components/shell/PageFrame";
 import TLink from "@/components/shell/TLink";
 import { DISCIPLINES } from "@/lib/disciplines";
 
-export const metadata: Metadata = { title: "About GabbRa" };
+export const metadata: Metadata = {
+  title: "About GabbRa",
+  description: "GabbRa is an independent creative practice working across photography, FPV and film.",
+};
 
 const STATEMENTS: Record<string, string> = {
   photo: "One frame, held: photography that treats perspective as the subject.",
   fpv: "The frame, in flight: first-person flying, built by hand and flown for the view.",
   film: "Frames, in sequence: story, emotion, movement and time.",
+  blog: "Notes from behind the lens: how the work is made, and what it taught me.",
 };
 
 export default function About() {

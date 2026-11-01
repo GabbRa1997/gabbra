@@ -152,7 +152,7 @@ export default function SiteHeader() {
             ))}
             {EXTRA.map((x, i) => (
               <li key={x.href}>
-                <MenuLink href={x.href} n={`0${i + 4}`} label={x.label} variant="fade" />
+                <MenuLink href={x.href} n={`0${i + 5}`} label={x.label} variant="fade" />
               </li>
             ))}
           </ul>

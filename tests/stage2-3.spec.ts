@@ -16,9 +16,9 @@ const enterSilent = async (page: Page) => {
 };
 
 test.describe("Landing", () => {
-  test("gate → logo reveal → three destinations", async ({ page }) => {
+  test("gate → logo reveal → four destinations", async ({ page }) => {
     await enterSilent(page);
-    for (const label of ["PHOTO", "FPV", "FILM"]) {
+    for (const label of ["PHOTO", "FPV", "FILM", "BLOG"]) {
       await expect(page.getByRole("link", { name: new RegExp(label) }).first()).toBeVisible();
     }
     await expect(page.getByRole("button", { name: /turn sound on|mute sound/i })).toBeVisible(); // the mute control
@@ -334,12 +334,12 @@ test.describe("Phone — descriptions pop up on the 3D view", () => {
 });
 
 test.describe("Artist", () => {
-  test("a Who am I card under the logo leads to the artist page, separate from the three destinations", async ({ page }) => {
+  test("a Who am I card under the logo leads to the artist page, separate from the four destinations", async ({ page }) => {
     await enterSilent(page);
     const card = page.getByRole("link", { name: /who am i/i });
     await expect(card).toBeVisible();
-    // it is not one of the three destinations
-    await expect(page.getByRole("navigation", { name: /enter a discipline/i }).getByRole("link", { name: /artist/i })).toHaveCount(0);
+    // it is not one of the four destinations
+    await expect(page.getByRole("navigation", { name: /enter a section/i }).getByRole("link", { name: /artist/i })).toHaveCount(0);
     await card.click();
     await expect(page).toHaveURL(/\/artist$/);
     await expect(page.getByRole("heading", { level: 1 })).toContainText(/who am i/i);
@@ -380,5 +380,33 @@ test.describe("Back arrow", () => {
       const r = await page.goto(u);
       expect(r?.status()).toBe(404);
     }
+  });
+});
+
+test.describe("Blog", () => {
+  test("a fourth Blog button opens the blog, which lists the welcome post", async ({ page }) => {
+    await enterSilent(page);
+    await page.getByRole("link", { name: /BLOG/ }).first().click();
+    await expect(page).toHaveURL(/\/blog$/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Blog");
+    await page.getByRole("link", { name: /Welcome to GabbRa/ }).click();
+    await expect(page).toHaveURL(/\/blog\/welcome-to-gabbra$/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Welcome to GabbRa");
+    expect(await page.locator('script[type="application/ld+json"]').last().textContent()).toContain("BlogPosting");
+  });
+
+  test("the menu lists Blog and the back arrow returns to the blog", async ({ page }) => {
+    await page.goto("/blog/welcome-to-gabbra");
+    await page.getByRole("button", { name: "Menu" }).click();
+    await expect(page.getByRole("dialog", { name: "Site menu" }).getByRole("link", { name: /Blog/ })).toBeVisible();
+    await page.keyboard.press("Escape");
+    await page.getByRole("link", { name: "Back one level" }).click();
+    await expect(page).toHaveURL(/\/blog$/);
+  });
+
+  test("the privacy page explains cookies", async ({ page }) => {
+    await page.goto("/privacy");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(/privacy/i);
+    await expect(page.getByText(/Google Analytics/).first()).toBeVisible();
   });
 });

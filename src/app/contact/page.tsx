@@ -4,7 +4,10 @@ import ContactForm from "@/components/shell/ContactForm";
 import { PageFrame } from "@/components/shell/PageFrame";
 import { SITE, instagramUrl } from "@/content/site";
 
-export const metadata: Metadata = { title: "Contact & Commissions" };
+export const metadata: Metadata = {
+  title: "Contact & Commissions",
+  description: "Commission enquiries for photography, FPV drone footage and film, plus prints and collaborations.",
+};
 
 export default function Contact() {
   return (

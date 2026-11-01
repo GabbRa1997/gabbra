@@ -1,4 +1,4 @@
-export type DisciplineId = "photo" | "fpv" | "film";
+export type DisciplineId = "photo" | "fpv" | "film" | "blog";
 
 export interface Discipline {
   id: DisciplineId;
@@ -42,6 +42,16 @@ export const DISCIPLINES: Discipline[] = [
     kicker: "Time",
     line: "Frames, in sequence.",
   },
+  {
+    id: "blog",
+    n: "04",
+    label: "BLOG",
+    long: "Blog",
+    href: "/blog",
+    tint: "#e6b980",
+    kicker: "Words",
+    line: "Notes from behind the lens.",
+  },
 ];
 
 export function disciplineFromPath(pathname: string): Discipline | null {
@@ -53,6 +63,8 @@ const LABELS: Record<string, string> = {
   photo: "PHOTO",
   fpv: "FPV",
   film: "FILM",
+  blog: "BLOG",
+  privacy: "PRIVACY",
   about: "ABOUT",
   artist: "WHO AM I?",
   contact: "CONTACT",
