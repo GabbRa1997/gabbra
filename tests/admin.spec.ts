@@ -151,4 +151,29 @@ test.describe("Admin", () => {
     expect(json.projects[0]).toMatchObject({ slug: "lisbon-nights", title: "Lisbon Nights", cover: "img-0001" });
     expect(json.projects[0].photos[0].w).toBe(1800);
   });
+
+  test("Google SEO: titles and descriptions are previewed, checked and saved; missing text is flagged", async ({ page }) => {
+    await signedIn(page);
+    const gh = await fakeGithub(page, {
+      "src/content/blog/no-desc.md": "---\ntitle: A post without text\ndate: 2026-02-02\ndescription:\n---\nBody",
+    });
+    await page.goto("/admin");
+    await page.getByRole("button", { name: "Google SEO" }).click();
+    await expect(page.getByText(/A post without text/).first()).toBeVisible();
+    await expect(page.getByText(/has no description/).first()).toBeVisible();
+
+    await page.getByRole("navigation", { name: "Pages" }).getByRole("button", { name: "Film" }).click();
+    await page.getByLabel(/^Page title/).fill("FPV & cinematic film by GabbRa");
+    await page.getByLabel(/^Description/).fill("Short films, commercial work and collaborations shot on FPV drones and cinema cameras.");
+    await page.getByLabel(/^Focus phrases/).fill("FPV film, ghost phrase");
+    await expect(page.getByLabel("Google preview")).toContainText("FPV & cinematic film by GabbRa — GabbRa");
+    await expect(page.getByText(/Not yet in the title or description:.*“ghost phrase”/)).toBeVisible();
+    await page.getByRole("button", { name: "Publish changes" }).click();
+    await expect(page.getByRole("status")).toContainText(/Saved/);
+    const saved = JSON.parse(Object.values(gh.blobs)[0]);
+    expect(saved.pages["/film"]).toMatchObject({
+      title: "FPV & cinematic film by GabbRa",
+      focus: ["FPV film", "ghost phrase"],
+    });
+  });
 });

@@ -1,10 +1,7 @@
-import type { Metadata } from "next";
+import { pageSeo } from "@/lib/seo";
 import FilmHub from "@/components/film/FilmHub";
 
-export const metadata: Metadata = {
-  title: "Film",
-  description: "Frames, in sequence: short films, commercial and creative work, and collaborations.",
-};
+export const metadata = pageSeo("/film");
 
 export default function FilmPage() {
   return (

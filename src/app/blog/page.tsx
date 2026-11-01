@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
+import { pageSeo } from "@/lib/seo";
 import { PageFrame, Placeholder } from "@/components/shell/PageFrame";
 import TLink from "@/components/shell/TLink";
 import { formatDate, getPosts } from "@/lib/blog";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Notes from behind the lens: photography, FPV drone flying and filmmaking, and how the work is made.",
-};
+export const metadata = pageSeo("/blog");
 
 export default function Blog() {
   const posts = getPosts();

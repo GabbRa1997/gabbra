@@ -1,10 +1,7 @@
-import type { Metadata } from "next";
+import { pageSeo } from "@/lib/seo";
 import FpvExperience from "@/components/fpv/FpvExperience";
 
-export const metadata: Metadata = {
-  title: "FPV",
-  description: "Built for flight: an interactive exploded view of a five-inch FPV quad, and the way into the FPV work.",
-};
+export const metadata = pageSeo("/fpv");
 
 export default function FpvPage() {
   return (

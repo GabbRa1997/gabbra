@@ -7,6 +7,7 @@ import SiteHeader from "@/components/shell/SiteHeader";
 import Analytics from "@/components/shell/Analytics";
 import JsonLd from "@/components/shell/JsonLd";
 import { SITE, instagramUrl } from "@/content/site";
+import { seoText } from "@/lib/seo";
 
 const archivo = Archivo({
   subsets: ["latin"],
@@ -22,18 +23,19 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
+const home = seoText("/");
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://gabbra.net"),
-  title: { default: "GabbRa — Photo / FPV / Film", template: "%s — GabbRa" },
-  description:
-    "GabbRa is an independent creative practice across photography, FPV drone flying and film. Reality, reframed.",
+  title: { default: home.title, template: "%s — GabbRa" },
+  description: home.description,
   alternates: { canonical: "./" },
   openGraph: {
     type: "website",
     siteName: "GabbRa",
     locale: "en_GB",
-    title: "GabbRa — Photo / FPV / Film",
-    description: "An independent creative practice across photography, FPV and film. Reality, reframed.",
+    title: home.title,
+    description: home.description,
     images: [{ url: "/brand/og.png", width: 1200, height: 630, alt: "GabbRa" }],
   },
   twitter: { card: "summary_large_image", images: ["/brand/og.png"] },

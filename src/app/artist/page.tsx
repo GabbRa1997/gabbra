@@ -1,13 +1,10 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
-import type { Metadata } from "next";
+import { pageSeo } from "@/lib/seo";
 import { PageFrame, Placeholder } from "@/components/shell/PageFrame";
 import TLink from "@/components/shell/TLink";
 
-export const metadata: Metadata = {
-  title: "Who am I?",
-  description: "Behind the lens, beyond the frame: the story of the person behind GabbRa.",
-};
+export const metadata = pageSeo("/artist");
 
 /**
  * The Canon 550D photograph from home. Drop a file named camera.jpg (or .jpeg, .webp, .png)

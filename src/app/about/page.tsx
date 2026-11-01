@@ -1,12 +1,9 @@
-import type { Metadata } from "next";
+import { pageSeo } from "@/lib/seo";
 import { PageFrame } from "@/components/shell/PageFrame";
 import TLink from "@/components/shell/TLink";
 import { DISCIPLINES } from "@/lib/disciplines";
 
-export const metadata: Metadata = {
-  title: "About GabbRa",
-  description: "GabbRa is an independent creative practice working across photography, FPV and film.",
-};
+export const metadata = pageSeo("/about");
 
 const STATEMENTS: Record<string, string> = {
   photo: "One frame, held: photography that treats perspective as the subject.",

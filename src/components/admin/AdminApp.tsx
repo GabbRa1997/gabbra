@@ -6,6 +6,7 @@ import BlogAdmin from "./BlogAdmin";
 import FilmAdmin from "./FilmAdmin";
 import FpvAdmin from "./FpvAdmin";
 import PhotoAdmin from "./PhotoAdmin";
+import SeoAdmin from "./SeoAdmin";
 import { Btn, Input, Label } from "./ui";
 
 const TABS = [
@@ -13,6 +14,7 @@ const TABS = [
   { id: "photo", label: "Photography", View: PhotoAdmin },
   { id: "film", label: "Film", View: FilmAdmin },
   { id: "fpv", label: "FPV", View: FpvAdmin },
+  { id: "seo", label: "Google SEO", View: BlogAdmin },
 ] as const;
 
 export default function AdminApp() {
@@ -58,7 +60,7 @@ export default function AdminApp() {
         </Btn>
       </div>
       <div className="mt-10">
-        <View key={tab} />
+        {tab === "seo" ? <SeoAdmin key="seo" goTo={setTab} /> : <View key={tab} />}
       </div>
     </div>
   );

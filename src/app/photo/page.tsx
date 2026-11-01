@@ -1,10 +1,7 @@
-import type { Metadata } from "next";
+import { pageSeo } from "@/lib/seo";
 import PhotoExperience from "@/components/photo/PhotoExperience";
 
-export const metadata: Metadata = {
-  title: "Photography",
-  description: "Open the camera: an interactive exploded view of a Canon EOS 550D, and the way into the photography.",
-};
+export const metadata = pageSeo("/photo");
 
 export default function PhotoPage() {
   return (

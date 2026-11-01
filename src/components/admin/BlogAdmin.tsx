@@ -5,7 +5,9 @@ import { blobToBase64, commit, listDir, readText, type FileChange } from "@/lib/
 import { parsePost, serializePost, type Post } from "@/lib/frontmatter";
 import { processImage } from "@/lib/image";
 import { slugify } from "@/lib/slug";
+import { DESC_MAX, TITLE_MAX } from "@/lib/seoDefaults";
 import { Btn, Input, Label, Notice, PublishBar, Textarea, usePublisher } from "./ui";
+import { Snippet, VerdictLine, descVerdict, titleVerdict } from "./seoUi";
 
 const DIR = "src/content/blog";
 type Pending = { path: string; blob: Blob; url: string };
@@ -107,9 +109,12 @@ export default function BlogAdmin() {
             <Input value={p.tags.join(", ")} onChange={(e) => patch({ tags: e.target.value.split(",").map((t) => t.trim()).filter(Boolean) })} />
           </Label>
         </div>
+        <VerdictLine v={titleVerdict(p.title)} count={p.title.length} max={TITLE_MAX} />
         <Label text="Description" hint="one or two sentences: this is what Google shows under the title">
           <Textarea rows={2} value={p.description} onChange={(e) => patch({ description: e.target.value })} />
         </Label>
+        <VerdictLine v={descVerdict(p.description)} count={p.description.length} max={DESC_MAX} />
+        <Snippet title={`${p.title} — GabbRa`} url={`gabbra.net › blog › ${editing.isNew ? slugify(p.title) || "…" : p.slug}`} description={p.description} />
         <div>
           <span className="t-label mb-2 block text-[0.62rem] text-steel">Cover image (optional)</span>
           {cover && (
