@@ -1,13 +1,15 @@
 import * as THREE from "three";
+import { detail, seg as segs } from "../shared/detail";
 
 export { plateGeometry, polyGeometry, tubeGeometry } from "../shared/geometry";
 
 /** Camera-specific geometry. Everything is modelled with the optical axis on +Z. */
 
 export function lensGeometry(R: number, edge: number, cf: number, cb: number, seg = 64) {
+  seg = segs(seg);
   // cf > 0: front surface bulges forward. cb > 0: back surface bulges backward.
   const pts: THREE.Vector2[] = [];
-  const n = 20;
+  const n = Math.max(8, Math.round(20 * detail.k));
   for (let i = 0; i <= n; i++) {
     const r = (i / n) * R;
     pts.push(new THREE.Vector2(r, edge / 2 + cf * (1 - (r / R) ** 2)));

@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { seg as segs } from "./detail";
 
 /** Geometry helpers shared by every exploded scene. */
 
@@ -27,7 +28,8 @@ export function tubeGeometry(
   len: number,
   opts: { ribs?: number; depth?: number; seg?: number } = {},
 ) {
-  const { ribs = 0, depth = 0.1, seg = 72 } = opts;
+  const { ribs = 0, depth = 0.1 } = opts;
+  const seg = segs(opts.seg ?? 72);
   const h = len / 2;
   const pts: THREE.Vector2[] = [new THREE.Vector2(rIn, -h), new THREE.Vector2(rOut, -h)];
   if (ribs > 0) {

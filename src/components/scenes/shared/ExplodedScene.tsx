@@ -2,16 +2,17 @@
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Environment, Lightformer, OrbitControls, PerformanceMonitor, Sparkles } from "@react-three/drei";
-import { Suspense, useMemo, useRef, useState, type MutableRefObject, type ReactElement } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState, type MutableRefObject, type ReactElement } from "react";
 import * as THREE from "three";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
+import { detail } from "./detail";
 import PartGroup from "./PartGroup";
 import { SceneCtx, type PartLike, type SceneState } from "./sceneContext";
 
 export type Quality = "full" | "lite";
 
 const DPR_FULL: [number, number][] = [[1, 2], [1, 1.5], [1, 1.25]];
-const DPR_LITE: [number, number][] = [[1.5, 2], [1.25, 1.75], [1, 1.5]];
+const DPR_LITE: [number, number][] = [[1.25, 1.75], [1.25, 1.5], [1, 1.25]];
 
 /** What a page hands to the scene each render. */
 export interface SceneProps {
@@ -140,6 +141,29 @@ function Rig({
   return null;
 }
 
+/**
+ * While a finger or mouse is dragging the view, nothing is being picked, so stop
+ * ray-casting against every triangle of the model on each move. On a phone that
+ * test was the main cost of turning the camera.
+ */
+function DragGate() {
+  const events = useThree((s) => s.events);
+  const controls = useThree((s) => s.controls) as unknown as OrbitControlsImpl | null;
+  useEffect(() => {
+    if (!controls) return;
+    const start = () => void (events.enabled = false);
+    const end = () => void (events.enabled = true);
+    controls.addEventListener("start", start);
+    controls.addEventListener("end", end);
+    return () => {
+      controls.removeEventListener("start", start);
+      controls.removeEventListener("end", end);
+      events.enabled = true;
+    };
+  }, [controls, events]);
+  return null;
+}
+
 /** Hangs in the dark: a slow, tiny drift so it never feels pinned. */
 function Float({ float, state }: { float: MutableRefObject<THREE.Group | null>; state: MutableRefObject<SceneState> }) {
   useFrame(({ clock }) => {
@@ -159,6 +183,8 @@ export default function ExplodedScene(props: SceneProps & SceneConfig) {
   const { quality, portrait, state, onSelect, onHover, onMissed } = props;
   const { parts, fixedParts = [], models, makeMats, accent, palette, view, layout, frame } = props;
 
+  // the parts are built after this runs, so they pick up the level of detail
+  detail.k = quality === "lite" ? 0.5 : 1;
   const mats = useMemo(() => makeMats(quality), [makeMats, quality]);
   const registry = useMemo(() => new Map<string, THREE.Vector3>(), []);
   const asm = useRef<THREE.Group | null>(null);
@@ -212,6 +238,7 @@ export default function ExplodedScene(props: SceneProps & SceneConfig) {
         <Clock state={state} portrait={portrait} asm={asm} layout={layout} />
         <Rig state={state} registry={registry} portrait={portrait} controls={controls} focusById={focusById} frame={frame} />
         <Float float={float} state={state} />
+        <DragGate />
 
         <group ref={asm} rotation={upright ? [-Math.PI / 2, 0, 0] : [0, 0, 0]}>
           <group ref={float}>

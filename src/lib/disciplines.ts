@@ -76,10 +76,13 @@ const LABELS: Record<string, string> = {
   "flight-reels": "FLIGHT REELS",
 };
 
-export function breadcrumbFromPath(pathname: string): string[] {
+export function breadcrumbFromPath(pathname: string): { label: string; href: string }[] {
   const parts = pathname.split("/").filter(Boolean);
   return [
-    "GABBRA",
-    ...parts.map((p) => LABELS[p] ?? p.replace(/-/g, " ").toUpperCase()),
+    { label: "GABBRA", href: "/" },
+    ...parts.map((p, i) => ({
+      label: LABELS[p] ?? p.replace(/-/g, " ").toUpperCase(),
+      href: `/${parts.slice(0, i + 1).join("/")}`,
+    })),
   ];
 }

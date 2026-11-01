@@ -22,7 +22,7 @@ export default function Blog() {
             <li key={p.slug}>
               <TLink
                 href={`/blog/${p.slug}`}
-                className="group grid gap-3 py-8 md:grid-cols-[11rem_1fr] md:gap-10"
+                className={`group grid gap-3 py-8 md:gap-10 ${p.cover ? "md:grid-cols-[11rem_1fr_9rem]" : "md:grid-cols-[11rem_1fr]"}`}
               >
                 <time dateTime={p.date} className="t-label pt-2 text-steel">
                   {formatDate(p.date)}
@@ -37,6 +37,10 @@ export default function Blog() {
                     <span className="t-label mt-4 block text-[0.62rem] text-steel">{p.tags.join(" · ")}</span>
                   )}
                 </span>
+                {p.cover && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={p.cover} alt="" loading="lazy" className="hidden aspect-[4/5] w-full border border-line object-cover md:block" />
+                )}
               </TLink>
             </li>
           ))}

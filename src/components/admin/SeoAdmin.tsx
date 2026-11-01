@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { commit, listDir, readText } from "@/lib/github";
 import { parsePost } from "@/lib/frontmatter";
 import { DESC_MAX, SEO_PAGES, TITLE_MAX, type SeoFile, type SeoOverride } from "@/lib/seoDefaults";
-import { Btn, Input, Label, Notice, PublishBar, Textarea, usePublisher } from "./ui";
+import { Btn, Input, Label, ListInput, Notice, PublishBar, Textarea, usePublisher } from "./ui";
 import { Snippet, VerdictLine, descVerdict, focusVerdict, titleVerdict } from "./seoUi";
 
 const FILE = "src/content/admin/seo.json";
@@ -153,10 +153,11 @@ export default function SeoAdmin({ goTo }: { goTo: (t: Tab) => void }) {
 
           <div>
             <Label text="Focus phrases" hint="what people should search to find this page, comma separated">
-              <Input
-                value={focus.join(", ")}
+              <ListInput
+                key={open}
+                value={focus}
                 placeholder="e.g. FPV drone filmmaker, cinematic drone footage"
-                onChange={(e) => set(open, { focus: e.target.value.split(",").map((x) => x.trim()).filter(Boolean) })}
+                onChange={(focus) => set(open, { focus })}
               />
             </Label>
             <VerdictLine v={focusVerdict(focus, `${title || base.title} ${shownDesc}`)} />

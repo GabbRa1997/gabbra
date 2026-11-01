@@ -76,12 +76,15 @@ export default function SiteHeader() {
                 {crumbs.map((c, i) => (
                   <li key={i} className="flex gap-3">
                     {i > 0 && <span aria-hidden className="text-bone/30">/</span>}
-                    <span
-                      aria-current={i === crumbs.length - 1 ? "page" : undefined}
-                      className={i === crumbs.length - 1 ? "text-[var(--tint)]" : ""}
-                    >
-                      {c}
-                    </span>
+                    {i === crumbs.length - 1 ? (
+                      <span aria-current="page" className="text-[var(--tint)]">
+                        {c.label}
+                      </span>
+                    ) : (
+                      <TLink href={c.href} variant="fade" className="transition-colors hover:text-bone focus-visible:text-bone">
+                        {c.label}
+                      </TLink>
+                    )}
                   </li>
                 ))}
               </ol>

@@ -10,6 +10,7 @@ import {
   plateGeometry,
   tubeGeometry,
 } from "./geometry";
+import { smooth } from "../shared/detail";
 import { useScene } from "../shared/sceneContext";
 
 /** Geometry is built once per part and kept; never rebuilt per frame. */
@@ -238,9 +239,9 @@ function Grip() {
   const { mats } = useScene();
   return (
     <>
-      <RoundedBox args={[3.0, 7.5, 2.1]} radius={0.95} smoothness={6} material={mats.rubberSoft} />
+      <RoundedBox args={[3.0, 7.5, 2.1]} radius={0.95} smoothness={smooth(6)} material={mats.rubberSoft} />
       {/* the contour the fingers wrap around */}
-      <RoundedBox args={[1.5, 6.6, 1.0]} radius={0.5} smoothness={5} position={[0.35, -0.1, 1.0]} material={mats.rubberSoft} />
+      <RoundedBox args={[1.5, 6.6, 1.0]} radius={0.5} smoothness={smooth(5)} position={[0.35, -0.1, 1.0]} material={mats.rubberSoft} />
       {[-2.4, -1.5, -0.6, 0.3, 1.2].map((y) => (
         <mesh key={y} position={[0.35, y, 1.52]} material={mats.rubberDark}>
           <boxGeometry args={[1.3, 0.06, 0.05]} />
@@ -296,8 +297,8 @@ function Hump() {
   return (
     <>
       {/* two stacked, softened masses: the body of the prism housing and its crown */}
-      <RoundedBox args={[7.6, 1.5, 4.3]} radius={0.55} smoothness={5} position={[0, -0.4, 0]} material={mats.plastic} />
-      <RoundedBox args={[5.4, 1.5, 3.7]} radius={0.72} smoothness={6} position={[0, 0.45, -0.15]} material={mats.plastic} />
+      <RoundedBox args={[7.6, 1.5, 4.3]} radius={0.55} smoothness={smooth(5)} position={[0, -0.4, 0]} material={mats.plastic} />
+      <RoundedBox args={[5.4, 1.5, 3.7]} radius={0.72} smoothness={smooth(6)} position={[0, 0.45, -0.15]} material={mats.plastic} />
       {/* the recess the flash rises from */}
       <mesh position={[0, 0.78, 1.55]} rotation={[0.28, 0, 0]} material={mats.chip}>
         <boxGeometry args={[3.0, 0.08, 1.0]} />
@@ -318,7 +319,7 @@ function Hump() {
         <boxGeometry args={[1.2, 0.05, 1.0]} />
       </mesh>
       {/* viewfinder: eyecup and diopter wheel */}
-      <RoundedBox args={[2.4, 1.2, 0.6]} radius={0.2} smoothness={4} position={[0, 0.1, -2.35]} material={mats.rubberSoft} />
+      <RoundedBox args={[2.4, 1.2, 0.6]} radius={0.2} smoothness={smooth(4)} position={[0, 0.1, -2.35]} material={mats.rubberSoft} />
       <mesh position={[0, 0.1, -2.68]} material={mats.chip}>
         <boxGeometry args={[1.5, 0.7, 0.04]} />
       </mesh>
@@ -344,7 +345,7 @@ function Flash() {
         <cylinderGeometry args={[0.16, 0.16, 3.0, 16]} />
       </mesh>
       {/* the head */}
-      <RoundedBox args={[3.4, 1.0, 1.1]} radius={0.3} smoothness={4} position={[0, 2.5, 0.2]} material={mats.plastic} />
+      <RoundedBox args={[3.4, 1.0, 1.1]} radius={0.3} smoothness={smooth(4)} position={[0, 2.5, 0.2]} material={mats.plastic} />
       {/* ribbed fresnel lens over the tube */}
       <mesh position={[0, 2.5, 0.77]} material={mats.frosted}>
         <boxGeometry args={[2.9, 0.72, 0.06]} />
@@ -549,7 +550,7 @@ function Battery() {
   const { mats } = useScene();
   return (
     <>
-      <RoundedBox args={[1.7, 5.5, 3.6]} radius={0.18} smoothness={4} material={mats.battery} />
+      <RoundedBox args={[1.7, 5.5, 3.6]} radius={0.18} smoothness={smooth(4)} material={mats.battery} />
       <mesh position={[0.86, 0.3, 0]} material={mats.label}>
         <boxGeometry args={[0.02, 3.4, 2.8]} />
       </mesh>
@@ -569,7 +570,7 @@ function RearPlate() {
     <>
       <mesh geometry={g} material={mats.rubber} />
       {/* thumb rest */}
-      <RoundedBox args={[2.6, 2.4, 0.18]} radius={0.12} smoothness={3} position={[-4.4, 2.4, -0.4]} material={mats.rubberSoft} />
+      <RoundedBox args={[2.6, 2.4, 0.18]} radius={0.12} smoothness={smooth(3)} position={[-4.4, 2.4, -0.4]} material={mats.rubberSoft} />
       {/* four-way pad and its set button */}
       <mesh position={[-4.5, -0.9, -0.4]} rotation={[Math.PI / 2, 0, 0]} material={mats.metalDark}>
         <cylinderGeometry args={[1.0, 1.0, 0.1, 40]} />
@@ -612,7 +613,7 @@ function Lcd() {
   const { mats } = useScene();
   return (
     <>
-      <RoundedBox args={[6.9, 4.8, 0.32]} radius={0.22} smoothness={4} material={mats.plastic} />
+      <RoundedBox args={[6.9, 4.8, 0.32]} radius={0.22} smoothness={smooth(4)} material={mats.plastic} />
       <mesh position={[0, 0, -0.17]} rotation={[0, Math.PI, 0]} material={mats.chip}>
         <planeGeometry args={[6.4, 4.35]} />
       </mesh>

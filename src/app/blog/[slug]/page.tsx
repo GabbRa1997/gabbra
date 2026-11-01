@@ -53,14 +53,19 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
           publisher: { "@type": "Organization", name: SITE.name },
         }}
       />
-      <article className="max-w-2xl">
+      {/* the picture sits beside the text on a desktop, and above it on a phone */}
+      <div className={p.cover ? "md:grid md:grid-cols-[minmax(0,40rem)_minmax(0,19rem)] md:items-start md:gap-14 lg:gap-20" : ""}>
         {p.cover && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={p.cover} alt="" className="mb-12 h-auto w-full border border-line" />
+          <figure className="mb-10 md:order-2 md:sticky md:top-28 md:mb-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={p.cover} alt="" className="h-auto max-h-[20rem] w-full border border-line object-cover md:max-h-[70svh]" />
+          </figure>
         )}
-        <Markdown source={p.body} />
-        {p.tags.length > 0 && <p className="t-label mt-12 text-[0.62rem] text-steel">{p.tags.join(" · ")}</p>}
-      </article>
+        <article className="max-w-2xl md:order-1">
+          <Markdown source={p.body} />
+          {p.tags.length > 0 && <p className="t-label mt-12 text-[0.62rem] text-steel">{p.tags.join(" · ")}</p>}
+        </article>
+      </div>
       <nav aria-label="Next" className="mt-20 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-8">
         <TLink href="/blog" className="t-label text-bone/70 hover:text-[var(--tint)]">
           ← All posts

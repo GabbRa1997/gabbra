@@ -126,7 +126,20 @@ test.describe("Responsive + accessibility", () => {
     await ctx.close();
   });
 
+  test("every step of the breadcrumb is a link back", async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem("gabbra:consent", "denied"));
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto("/film/short-films/project-01");
+    const nav = page.getByRole("navigation", { name: "Breadcrumb" });
+    await expect(nav.getByRole("link")).toHaveCount(3);
+    await nav.getByRole("link", { name: "SHORT FILMS" }).click();
+    await expect(page).toHaveURL(/\/film\/short-films\/?$/);
+    await page.getByRole("navigation", { name: "Breadcrumb" }).getByRole("link", { name: "FILM", exact: true }).click();
+    await expect(page).toHaveURL(/\/film\/?$/);
+  });
+
   test("menu opens, traps nothing, closes with Escape", async ({ page }) => {
+    await page.addInitScript(() => localStorage.setItem("gabbra:consent", "denied")); // the cookie notice is a dialog too
     await page.goto("/about");
     await page.getByRole("button", { name: /^menu$/i }).click();
     await expect(page.getByRole("dialog", { name: /site menu/i })).toBeVisible();
@@ -255,6 +268,7 @@ test.describe("Film — frames in sequence", () => {
 test.describe("Portfolio — real content", () => {
   test("selected works lists projects; one opens, the viewer works with the keyboard", async ({ page }) => {
     test.skip(!hasPhotos, "no photographs supplied yet");
+    await page.addInitScript(() => localStorage.setItem("gabbra:consent", "denied"));
     await page.goto("/photo/selected-works");
     await page.getByRole("link", { name: new RegExp(projects[0].title) }).first().click();
     await expect(page).toHaveURL(new RegExp(`/photo/selected-works/${projects[0].slug}$`));

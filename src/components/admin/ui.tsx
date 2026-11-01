@@ -35,6 +35,32 @@ export function Label({ text, hint, children }: { text: string; hint?: string; c
 }
 
 export const Input = (p: InputHTMLAttributes<HTMLInputElement>) => <input {...p} className={`${field} ${p.className ?? ""}`} />;
+
+const parseList = (t: string) => t.split(",").map((x) => x.trim()).filter(Boolean);
+
+/**
+ * A comma-separated list in one box. It keeps exactly what is typed (commas, spaces and
+ * all) and hands back the cleaned-up list, so typing "fpv, " is not undone mid-sentence.
+ * Give it a `key` when the list it shows can be swapped for another one.
+ */
+export function ListInput({
+  value,
+  onChange,
+  ...p
+}: Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> & { value: string[]; onChange: (v: string[]) => void }) {
+  const [text, setText] = useState(value.join(", "));
+  return (
+    <Input
+      {...p}
+      value={text}
+      onChange={(e) => {
+        setText(e.target.value);
+        onChange(parseList(e.target.value));
+      }}
+      onBlur={() => setText(value.join(", "))}
+    />
+  );
+}
 export const Textarea = (p: TextareaHTMLAttributes<HTMLTextAreaElement>) => (
   <textarea {...p} className={`${field} ${p.className ?? ""}`} />
 );

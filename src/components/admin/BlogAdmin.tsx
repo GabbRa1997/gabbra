@@ -6,7 +6,7 @@ import { parsePost, serializePost, type Post } from "@/lib/frontmatter";
 import { processImage } from "@/lib/image";
 import { slugify } from "@/lib/slug";
 import { DESC_MAX, TITLE_MAX } from "@/lib/seoDefaults";
-import { Btn, Input, Label, Notice, PublishBar, Textarea, usePublisher } from "./ui";
+import { Btn, Input, Label, ListInput, Notice, PublishBar, Textarea, usePublisher } from "./ui";
 import { Snippet, VerdictLine, descVerdict, titleVerdict } from "./seoUi";
 
 const DIR = "src/content/blog";
@@ -43,7 +43,8 @@ export default function BlogAdmin() {
     try {
       const out = await processImage(file, [1600]);
       const v = out.variants[0];
-      const name = `${editing.post.slug || "post"}-${as === "cover" ? "cover" : Date.now()}.${v.ext}`;
+      const base = editing.post.slug || slugify(editing.post.title) || "post";
+      const name = `${base}-${as === "cover" ? "cover-" : ""}${Date.now()}.${v.ext}`;
       const path = `public/uploads/blog/${name}`;
       setImages((list) => [...list.filter((i) => i.path !== path), { path, blob: v.blob, url: URL.createObjectURL(v.blob) }]);
       const site = `/uploads/blog/${name}`;
@@ -106,7 +107,7 @@ export default function BlogAdmin() {
             <Input type="date" value={p.date} onChange={(e) => patch({ date: e.target.value })} />
           </Label>
           <Label text="Tags" hint="comma separated, e.g. fpv, drone, cinematic">
-            <Input value={p.tags.join(", ")} onChange={(e) => patch({ tags: e.target.value.split(",").map((t) => t.trim()).filter(Boolean) })} />
+            <ListInput value={p.tags} onChange={(tags) => patch({ tags })} />
           </Label>
         </div>
         <VerdictLine v={titleVerdict(p.title)} count={p.title.length} max={TITLE_MAX} />
@@ -115,18 +116,27 @@ export default function BlogAdmin() {
         </Label>
         <VerdictLine v={descVerdict(p.description)} count={p.description.length} max={DESC_MAX} />
         <Snippet title={`${p.title} — GabbRa`} url={`gabbra.net › blog › ${editing.isNew ? slugify(p.title) || "…" : p.slug}`} description={p.description} />
-        <div>
-          <span className="t-label mb-2 block text-[0.62rem] text-steel">Cover image (optional)</span>
-          {cover && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={cover} alt="" className="mb-3 max-h-48 border border-line" />
-          )}
-          <input type="file" accept="image/*" disabled={busyImg} onChange={(e) => e.target.files?.[0] && void addImage(e.target.files[0], "cover")} className="text-sm text-bone/60" />
-          {p.cover && (
-            <Btn className="ml-3" onClick={() => patch({ cover: undefined })}>
-              Remove cover
-            </Btn>
-          )}
+        <div className="border border-line p-4">
+          <span className="t-label block text-[0.62rem] text-steel">Picture for this post (optional)</span>
+          <p className="mt-1 text-sm text-bone/45">
+            On a computer it sits to the right of the writing, and on a phone above it. It is also the picture shown when the post is shared.
+          </p>
+          <div className="mt-4 flex flex-wrap items-start gap-5">
+            {cover ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={cover} alt="" className="h-40 w-32 border border-line object-cover" />
+            ) : (
+              <div className="flex h-40 w-32 items-center justify-center border border-dashed border-line px-2 text-center text-xs text-bone/35">No picture yet</div>
+            )}
+            <div className="flex flex-col items-start gap-3">
+              <label className="t-label cursor-pointer border border-line px-4 py-2.5 text-bone/75 hover:border-[var(--tint)] hover:text-[var(--tint)]">
+                {busyImg ? "Preparing…" : p.cover ? "Change picture" : "Choose a picture"}
+                <input type="file" accept="image/*" hidden disabled={busyImg} onChange={(e) => e.target.files?.[0] && void addImage(e.target.files[0], "cover")} />
+              </label>
+              {p.cover && <Btn onClick={() => patch({ cover: undefined })}>Remove picture</Btn>}
+              <span className="max-w-[16rem] text-xs text-bone/35">A portrait or square photo looks best at the side.</span>
+            </div>
+          </div>
         </div>
         <Label text="The post" hint="blank line = new paragraph · ## heading · - list · **bold** · [text](link)">
           <Textarea rows={16} value={p.body} onChange={(e) => patch({ body: e.target.value })} className="font-mono text-[0.92rem] leading-relaxed" />

@@ -82,15 +82,24 @@ test.describe("Admin", () => {
     await page.getByRole("button", { name: "New post" }).click();
     await page.getByLabel("Title", { exact: true }).fill("My First Night Flight");
     await page.getByLabel(/^Description/).fill("A short flight at night.");
-    await page.getByLabel(/^Tags/).fill("fpv, night");
+    // typed key by key, the way a person does: the comma and space must survive each keystroke
+    await page.getByLabel(/^Tags/).pressSequentially("fpv, night,");
+    await expect(page.getByLabel(/^Tags/)).toHaveValue("fpv, night,");
+    await page.getByLabel(/^Tags/).pressSequentially(" drone");
+    const jpg = await sharp({ create: { width: 900, height: 1200, channels: 3, background: "#335577" } }).jpeg().toBuffer();
+    await page.locator('input[type="file"]').first().setInputFiles({ name: "cover.jpg", mimeType: "image/jpeg", buffer: jpg });
+    await expect(page.getByRole("button", { name: "Remove picture" })).toBeVisible({ timeout: 30_000 });
     await page.getByLabel(/^The post/).fill("It was **dark**.");
     await page.getByRole("button", { name: "Publish post" }).click();
     await expect(page.getByRole("status")).toContainText(/Saved/);
     expect(gh.commits[0]).toBe("Blog: My First Night Flight");
-    expect(gh.trees[0].map((t) => t.path)).toEqual(["src/content/blog/my-first-night-flight.md"]);
-    const text = Object.values(gh.blobs)[0];
-    expect(text).toContain("title: My First Night Flight");
-    expect(text).toContain("tags: fpv, night");
+    const paths = gh.trees[0].map((t) => t.path).sort();
+    expect(paths).toHaveLength(2);
+    expect(paths[0]).toMatch(/^public\/uploads\/blog\/my-first-night-flight-cover-\d+\.(webp|jpg)$/);
+    expect(paths[1]).toBe("src/content/blog/my-first-night-flight.md");
+    const text = Object.values(gh.blobs).find((b) => b.includes("title: My First Night Flight"))!;
+    expect(text).toMatch(/cover: \/uploads\/blog\/my-first-night-flight-cover-\d+\.(webp|jpg)/);
+    expect(text).toContain("tags: fpv, night, drone");
     expect(text).toContain("It was **dark**.");
   });
 
