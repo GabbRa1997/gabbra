@@ -1,10 +1,10 @@
 "use client";
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Environment, Lightformer, OrbitControls, PerformanceMonitor, Sparkles, TrackballControls } from "@react-three/drei";
+import { Environment, Lightformer, OrbitControls, PerformanceMonitor, Sparkles } from "@react-three/drei";
 import { Suspense, useEffect, useMemo, useRef, useState, type MutableRefObject, type ReactElement } from "react";
 import * as THREE from "three";
-import type { OrbitControls as OrbitControlsImpl, TrackballControls as TrackballControlsImpl } from "three-stdlib";
+import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import { detail } from "./detail";
 import PartGroup from "./PartGroup";
 import { SceneCtx, type PartLike, type SceneState } from "./sceneContext";
@@ -86,7 +86,7 @@ function Rig({
   state: MutableRefObject<SceneState>;
   registry: Map<string, THREE.Vector3>;
   portrait: boolean;
-  controls: MutableRefObject<OrbitControlsImpl | TrackballControlsImpl | null>;
+  controls: MutableRefObject<OrbitControlsImpl | null>;
   focusById: Record<string, number>;
   frame: SceneConfig["frame"];
 }) {
@@ -143,24 +143,110 @@ function Rig({
 
 /**
  * While a finger or mouse is dragging the view, nothing is being picked, so stop
- * ray-casting against every triangle of the model on each move. On a phone that
- * test was the main cost of turning the camera.
+ * ray-casting against every triangle of the model on each move. The block starts only
+ * once the view actually moves, so a plain tap still reaches the part under it.
  */
 function DragGate() {
   const events = useThree((s) => s.events);
-  const controls = useThree((s) => s.controls) as unknown as (OrbitControlsImpl | TrackballControlsImpl) | null;
+  const controls = useThree((s) => s.controls) as unknown as OrbitControlsImpl | null;
   useEffect(() => {
     if (!controls) return;
-    const start = () => void (events.enabled = false);
-    const end = () => void (events.enabled = true);
+    let dragging = false;
+    const start = () => void (dragging = true);
+    const change = () => {
+      if (dragging) events.enabled = false;
+    };
+    const end = () => {
+      dragging = false;
+      events.enabled = true;
+    };
     controls.addEventListener("start", start);
+    controls.addEventListener("change", change);
     controls.addEventListener("end", end);
     return () => {
       controls.removeEventListener("start", start);
+      controls.removeEventListener("change", change);
       controls.removeEventListener("end", end);
       events.enabled = true;
     };
   }, [controls, events]);
+  return null;
+}
+
+/**
+ * Free tumbling for a model stood on its end: one finger turns it any way, like holding it.
+ * It uses plain pointer events and never cancels them, so a tap is still a tap.
+ */
+function Tumble({ target, state }: { target: MutableRefObject<THREE.Group | null>; state: MutableRefObject<SceneState> }) {
+  const { gl, camera, events } = useThree();
+  const vel = useRef({ x: 0, y: 0 });
+  const drag = useRef<{ id: number; x: number; y: number; moved: number } | null>(null);
+  const q = useMemo(() => new THREE.Quaternion(), []);
+  const axis = useMemo(() => new THREE.Vector3(), []);
+  const home = useMemo(() => new THREE.Quaternion(), []);
+
+  const turn = (dx: number, dy: number) => {
+    const g = target.current;
+    if (!g || (dx === 0 && dy === 0)) return;
+    axis.set(dy, dx, 0).normalize().applyQuaternion(camera.quaternion);
+    q.setFromAxisAngle(axis, Math.hypot(dx, dy) * 0.0085);
+    g.quaternion.premultiply(q);
+  };
+
+  useEffect(() => {
+    const el = gl.domElement;
+    const down = (e: PointerEvent) => {
+      if (!e.isPrimary || (e.pointerType === "mouse" && e.button !== 0)) {
+        drag.current = null; // a second finger is a pinch, not a turn
+        return;
+      }
+      drag.current = { id: e.pointerId, x: e.clientX, y: e.clientY, moved: 0 };
+      vel.current = { x: 0, y: 0 };
+    };
+    const move = (e: PointerEvent) => {
+      const d = drag.current;
+      if (!d || e.pointerId !== d.id) return;
+      const dx = e.clientX - d.x;
+      const dy = e.clientY - d.y;
+      d.x = e.clientX;
+      d.y = e.clientY;
+      d.moved += Math.abs(dx) + Math.abs(dy);
+      if (d.moved > 8) events.enabled = false; // a drag: stop picking parts under the finger
+      vel.current = { x: dx, y: dy };
+      turn(dx, dy);
+    };
+    const up = (e: PointerEvent) => {
+      if (drag.current && e.pointerId === drag.current.id) {
+        drag.current = null;
+        events.enabled = true;
+      }
+    };
+    el.addEventListener("pointerdown", down);
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", up);
+    window.addEventListener("pointercancel", up);
+    return () => {
+      el.removeEventListener("pointerdown", down);
+      window.removeEventListener("pointermove", move);
+      window.removeEventListener("pointerup", up);
+      window.removeEventListener("pointercancel", up);
+      events.enabled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gl, events]);
+
+  useFrame((_, dt) => {
+    const g = target.current;
+    if (!g) return;
+    if (drag.current) return;
+    // after letting go it glides to a stop
+    const f = Math.exp(-dt * 5);
+    vel.current.x *= f;
+    vel.current.y *= f;
+    if (Math.abs(vel.current.x) + Math.abs(vel.current.y) > 0.05) turn(vel.current.x, vel.current.y);
+    // inspecting a part: bring the model back upright so the part can be seen
+    if (state.current.selected) g.quaternion.slerp(home, 1 - Math.exp(-dt * 3));
+  });
   return null;
 }
 
@@ -189,7 +275,8 @@ export default function ExplodedScene(props: SceneProps & SceneConfig) {
   const registry = useMemo(() => new Map<string, THREE.Vector3>(), []);
   const asm = useRef<THREE.Group | null>(null);
   const float = useRef<THREE.Group | null>(null);
-  const controls = useRef<OrbitControlsImpl | TrackballControlsImpl | null>(null);
+  const tumble = useRef<THREE.Group | null>(null);
+  const controls = useRef<OrbitControlsImpl | null>(null);
   // Resolution steps: start sharp, give a little back only when the frame rate really suffers,
   // and win it back when it recovers. Phones start high because their screens are dense.
   const tiers = quality === "full" ? DPR_FULL : DPR_LITE;
@@ -238,8 +325,9 @@ export default function ExplodedScene(props: SceneProps & SceneConfig) {
         <Clock state={state} portrait={portrait} asm={asm} layout={layout} />
         <Rig state={state} registry={registry} portrait={portrait} controls={controls} focusById={focusById} frame={frame} />
         <Float float={float} state={state} />
-        <DragGate />
+        {upright ? <Tumble target={tumble} state={state} /> : <DragGate />}
 
+        <group ref={tumble}>
         <group ref={asm} rotation={upright ? [-Math.PI / 2, 0, 0] : [0, 0, 0]}>
           <group ref={float}>
             {parts.map((p) => {
@@ -251,6 +339,7 @@ export default function ExplodedScene(props: SceneProps & SceneConfig) {
               );
             })}
           </group>
+        </group>
         </group>
 
         {fixedParts.length > 0 && (
@@ -275,35 +364,20 @@ export default function ExplodedScene(props: SceneProps & SceneConfig) {
           color={palette.sparkle}
         />
 
-        {upright ? (
-          // Stood on its end the camera needs to tumble freely, front to back as well as around;
-          // an orbit would only ever spin it like a turntable.
-          <TrackballControls
-            ref={controls as unknown as MutableRefObject<TrackballControlsImpl>}
-            makeDefault
-            noPan
-            rotateSpeed={2.6}
-            zoomSpeed={1.1}
-            staticMoving={false}
-            dynamicDampingFactor={0.12}
-            minDistance={4}
-            maxDistance={190}
-          />
-        ) : (
-          <OrbitControls
-            ref={controls as MutableRefObject<OrbitControlsImpl>}
-            makeDefault
-            enablePan={false}
-            enableDamping
-            dampingFactor={0.08}
-            rotateSpeed={0.7}
-            zoomSpeed={0.7}
-            minDistance={4}
-            maxDistance={190}
-            minPolarAngle={0.3}
-            maxPolarAngle={Math.PI - 0.3}
-          />
-        )}
+        <OrbitControls
+          ref={controls as MutableRefObject<OrbitControlsImpl>}
+          makeDefault
+          enablePan={false}
+          enableRotate={!upright}
+          enableDamping
+          dampingFactor={0.08}
+          rotateSpeed={0.7}
+          zoomSpeed={0.7}
+          minDistance={4}
+          maxDistance={190}
+          minPolarAngle={0.3}
+          maxPolarAngle={Math.PI - 0.3}
+        />
       </SceneCtx.Provider>
     </Canvas>
   );

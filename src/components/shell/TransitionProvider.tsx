@@ -9,7 +9,6 @@ import {
   useMemo,
   useRef,
 } from "react";
-import gsap from "gsap";
 import { useSound } from "./SoundProvider";
 import { useReducedMotion } from "@/lib/hooks";
 
@@ -28,18 +27,25 @@ export function variantFor(href: string): TransitionVariant {
   return "fade";
 }
 
-const TINT: Record<TransitionVariant, string> = {
-  iris: "#e6b980",
-  whip: "#e6b980",
-  leader: "#e6b980",
-  fade: "#ecebe6",
+const AMBER = "#e6b980";
+const IN_OUT = "cubic-bezier(0.76, 0, 0.24, 1)";
+const OUT = "cubic-bezier(0.22, 1, 0.36, 1)";
+
+/** Fine amber lines, the same family for every transition. */
+const LINES = {
+  whip: "repeating-linear-gradient(90deg, rgba(230,185,128,.12) 0 1px, transparent 1px 46px)",
+  leader: "repeating-linear-gradient(0deg, rgba(230,185,128,.12) 0 1px, transparent 1px 46px)",
+  iris: "repeating-radial-gradient(circle at 50% 50%, rgba(230,185,128,.14) 0 1px, transparent 1px 44px)",
 };
 
 /**
- * One overlay, three behaviours:
- *  iris   — aperture closes, then opens on the new page (Photo)
- *  whip   — a fast slanted pan across the frame (FPV)
- *  leader — a film-leader wipe with a red edge (Film)
+ * One overlay, three behaviours, all drawn with transforms only:
+ *  iris   — a ringed disc opens from the centre, then closes back (Photo)
+ *  whip   — a fast slanted pan with fine vertical lines (FPV)
+ *  leader — a film-leader wipe with fine horizontal lines, drawn downwards (Film)
+ *
+ * They run as Web Animations, which the browser's compositor plays on its own, so
+ * they stay smooth even while the next page (and its 3D scene) is busy loading.
  */
 export default function TransitionProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -48,84 +54,75 @@ export default function TransitionProvider({ children }: { children: React.React
   const { cue } = useSound();
 
   const overlay = useRef<HTMLDivElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
   const edge = useRef<HTMLDivElement>(null);
+  const disc = useRef<HTMLDivElement>(null);
   const pending = useRef<TransitionVariant | null>(null);
   const busy = useRef(false);
   const failsafe = useRef<number | null>(null);
+  const gen = useRef(0);
+
+  /** play one animation on an element; resolves when it ends, or never if it is replaced */
+  const play = (el: HTMLElement, frames: Keyframe[], duration: number, easing: string, delay = 0) =>
+    new Promise<boolean>((resolve) => {
+      const a = el.animate(frames, { duration, easing, delay, fill: "both" });
+      a.onfinish = () => resolve(true);
+      a.oncancel = () => resolve(false);
+    });
 
   const prep = (v: TransitionVariant) => {
-    const el = overlay.current!;
+    gen.current++;
+    for (const el of [panel.current!, edge.current!, disc.current!]) el.getAnimations().forEach((a) => a.cancel());
+    const o = overlay.current!;
+    const pn = panel.current!;
     const ed = edge.current!;
-    gsap.killTweensOf([el, ed]);
-    gsap.set(el, {
-      display: "block",
-      clearProps: "transform,clipPath,opacity,maskImage,webkitMaskImage",
-    });
-    gsap.set(ed, { opacity: 0, background: TINT[v] });
-    el.style.backgroundImage = "none";
-    el.dataset.variant = v;
+    const dc = disc.current!;
+    o.style.display = "block";
+    const iris = v === "iris" && !reduced;
+    pn.style.display = iris ? "none" : "block";
+    dc.style.display = iris ? "block" : "none";
+    pn.style.backgroundImage = !reduced && (v === "whip" || v === "leader") ? LINES[v] : "none";
+    ed.style.opacity = "0";
+    if (v === "whip") Object.assign(ed.style, { left: "0", right: "auto", top: "0", bottom: "0", width: "3px", height: "auto", background: AMBER });
+    if (v === "leader") Object.assign(ed.style, { left: "0", right: "0", top: "auto", bottom: "0", width: "auto", height: "3px", background: AMBER });
+    if (iris) {
+      const d = Math.ceil(Math.hypot(window.innerWidth, window.innerHeight) * 1.06);
+      Object.assign(dc.style, { width: `${d}px`, height: `${d}px`, marginLeft: `${-d / 2}px`, marginTop: `${-d / 2}px`, backgroundImage: LINES.iris });
+    }
   };
 
   const cover = useCallback(
-    (v: TransitionVariant) =>
-      new Promise<void>((resolve) => {
-        const el = overlay.current!;
-        const ed = edge.current!;
-        prep(v);
-        if (reduced || v === "fade") {
-          gsap.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.25, onComplete: resolve });
-          return;
-        }
-        if (v === "iris") {
-          const mask = "radial-gradient(circle at 50% 50%, transparent calc(var(--r) * 1vmax), #000 calc(var(--r) * 1vmax + 1px))";
-          el.style.maskImage = mask;
-          el.style.webkitMaskImage = mask;
-          gsap.fromTo(
-            el,
-            { "--r": 80 },
-            { "--r": 0, duration: 0.8, ease: "power3.inOut", onComplete: resolve },
-          );
-        } else if (v === "whip") {
-          el.style.backgroundImage =
-            "repeating-linear-gradient(90deg, rgba(230,185,128,.10) 0 2px, transparent 2px 46px)";
-          gsap.set(ed, { opacity: 1, left: 0, right: "auto", width: 3, top: 0, bottom: 0, height: "auto" });
-          gsap.fromTo(
-            el,
-            { xPercent: 105, skewX: -14 },
-            { xPercent: 0, skewX: 0, duration: 0.5, ease: "power3.in", onComplete: resolve },
-          );
-        } else {
-          gsap.set(ed, { opacity: 1, left: 0, right: 0, width: "auto", height: 3, bottom: 0, top: "auto" });
-          gsap.fromTo(
-            el,
-            { clipPath: "inset(0 0 100% 0)" },
-            { clipPath: "inset(0 0 0% 0)", duration: 0.65, ease: "power3.inOut", onComplete: resolve },
-          );
-        }
-      }),
+    (v: TransitionVariant) => {
+      prep(v);
+      const pn = panel.current!;
+      const ed = edge.current!;
+      const dc = disc.current!;
+      if (reduced || v === "fade") return play(pn, [{ opacity: 0 }, { opacity: 1 }], 220, "linear").then(() => {});
+      if (v === "iris") return play(dc, [{ transform: "scale(0)" }, { transform: "scale(1)" }], 520, IN_OUT).then(() => {});
+      ed.style.opacity = "1";
+      if (v === "whip")
+        return play(pn, [{ transform: "translateX(105%) skewX(-14deg)" }, { transform: "translateX(0) skewX(0deg)" }], 440, "cubic-bezier(0.55, 0, 0.9, 0.35)").then(() => {});
+      return play(pn, [{ transform: "translateY(-100%)" }, { transform: "translateY(0)" }], 520, IN_OUT).then(() => {});
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [reduced],
   );
 
   const uncover = useCallback(
-    (v: TransitionVariant) =>
-      new Promise<void>((resolve) => {
-        const el = overlay.current!;
-        const done = () => {
-          gsap.set(el, { display: "none" });
-          resolve();
-        };
-        if (reduced || v === "fade") {
-          gsap.to(el, { opacity: 0, duration: 0.3, onComplete: done });
-          return;
-        }
-        if (v === "iris") {
-          gsap.to(el, { "--r": 80, duration: 0.95, ease: "power3.inOut", delay: 0.1, onComplete: done });
-        } else if (v === "whip") {
-          gsap.to(el, { xPercent: -105, skewX: 10, duration: 0.55, ease: "power3.out", delay: 0.05, onComplete: done });
-        } else {
-          gsap.to(el, { clipPath: "inset(100% 0 0% 0)", duration: 0.8, ease: "power3.inOut", delay: 0.15, onComplete: done });
-        }
-      }),
+    async (v: TransitionVariant) => {
+      const mine = gen.current;
+      const pn = panel.current!;
+      const dc = disc.current!;
+      let ok = true;
+      if (reduced || v === "fade") ok = await play(pn, [{ opacity: 1 }, { opacity: 0 }], 260, "linear");
+      else if (v === "iris") ok = await play(dc, [{ transform: "scale(1)" }, { transform: "scale(0)" }], 640, OUT, 60);
+      else if (v === "whip")
+        ok = await play(pn, [{ transform: "translateX(0) skewX(0deg)" }, { transform: "translateX(-105%) skewX(10deg)" }], 520, OUT, 40);
+      else ok = await play(pn, [{ transform: "translateY(0)" }, { transform: "translateY(100%)" }], 620, IN_OUT, 80);
+      // a newer transition took over: leave the overlay to it
+      if (ok && mine === gen.current) overlay.current!.style.display = "none";
+    },
+     
     [reduced],
   );
 
@@ -137,6 +134,12 @@ export default function TransitionProvider({ children }: { children: React.React
       const v = variant ?? variantFor(href);
       busy.current = true;
       pending.current = v;
+      // start fetching the next page, and its 3D scene, while the overlay is still closing
+      try {
+        router.prefetch(href);
+      } catch {}
+      if (href.startsWith("/photo")) void import("@/components/scenes/photo/CameraScene");
+      else if (href.startsWith("/fpv")) void import("@/components/scenes/fpv/DroneScene");
       cue(v === "iris" ? "shutter" : v === "whip" ? "whoosh" : v === "leader" ? "thud" : "tick");
       void cover(v).then(() => router.push(href));
       // If navigation never lands, never leave the visitor staring at black.
@@ -171,12 +174,15 @@ export default function TransitionProvider({ children }: { children: React.React
   return (
     <Ctx.Provider value={value}>
       {children}
-      <div
-        ref={overlay}
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-[100] hidden bg-ink"
-      >
-        <div ref={edge} className="absolute opacity-0" />
+      <div ref={overlay} aria-hidden className="pointer-events-none fixed inset-0 z-[100] hidden overflow-hidden">
+        <div ref={panel} className="absolute inset-0 bg-ink will-change-transform">
+          <div ref={edge} className="absolute opacity-0" />
+        </div>
+        <div
+          ref={disc}
+          className="absolute left-1/2 top-1/2 hidden rounded-full border-2 bg-ink will-change-transform"
+          style={{ borderColor: AMBER }}
+        />
       </div>
     </Ctx.Provider>
   );
