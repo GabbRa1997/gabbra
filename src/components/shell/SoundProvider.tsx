@@ -30,8 +30,7 @@ export const useSound = () => useContext(SoundCtx);
 
 /**
  * Generative ambience: no audio files, so nothing to download and nothing to
- * license. A low drone with slow filter movement, soft birdsong drifting over it,
- * plus short UI cues.
+ * license. A low drone with slow filter movement, plus short UI cues.
  */
 class Engine {
   ctx: AudioContext;
@@ -39,8 +38,6 @@ class Engine {
   cues: GainNode;
   noise: AudioBuffer;
   started = false;
-  birds: GainNode | null = null;
-  birdTimer = 0;
 
   constructor() {
     const AC =
@@ -122,91 +119,15 @@ class Engine {
     lfo2.start();
   }
 
-  /** a bird bus: soft, a little distant, with a faint echo so it sits behind the drone */
-  private startBirds() {
-    if (this.birds) return;
-    const c = this.ctx;
-    const bus = c.createGain();
-    bus.gain.value = 0.5;
-    const hp = c.createBiquadFilter();
-    hp.type = "highpass";
-    hp.frequency.value = 1400;
-    const echo = c.createDelay(1);
-    echo.delayTime.value = 0.31;
-    const fb = c.createGain();
-    fb.gain.value = 0.28;
-    const damp = c.createBiquadFilter();
-    damp.type = "lowpass";
-    damp.frequency.value = 3200;
-    bus.connect(hp);
-    hp.connect(this.master);
-    hp.connect(echo);
-    echo.connect(damp).connect(fb).connect(echo);
-    damp.connect(this.master);
-    this.birds = bus;
-  }
-
-  /** one soft chirp: a quick rounded glide, a little vibrato, a gentle envelope */
-  private chirp(at: number, base: number, glide: number, dur: number, peak: number, pan: number) {
-    const c = this.ctx;
-    const t0 = c.currentTime + at;
-    const o = c.createOscillator();
-    o.type = "sine";
-    o.frequency.setValueAtTime(base, t0);
-    o.frequency.exponentialRampToValueAtTime(base * glide, t0 + dur);
-    const vib = c.createOscillator();
-    vib.frequency.value = 28 + Math.random() * 14;
-    const vg = c.createGain();
-    vg.gain.value = base * 0.025;
-    vib.connect(vg).connect(o.frequency);
-    const g = c.createGain();
-    g.gain.setValueAtTime(0.0001, t0);
-    g.gain.exponentialRampToValueAtTime(peak, t0 + dur * 0.3);
-    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
-    const p = c.createStereoPanner();
-    p.pan.value = pan;
-    o.connect(g).connect(p).connect(this.birds ?? this.master);
-    o.start(t0);
-    vib.start(t0);
-    o.stop(t0 + dur + 0.05);
-    vib.stop(t0 + dur + 0.05);
-  }
-
-  /** a short phrase of two to five chirps, then a long quiet before the next */
-  private phrase() {
-    const pan = Math.random() * 1.4 - 0.7;
-    const base = 2300 + Math.random() * 1500;
-    const n = 2 + Math.floor(Math.random() * 4);
-    let at = 0;
-    for (let i = 0; i < n; i++) {
-      const dur = 0.07 + Math.random() * 0.09;
-      const up = Math.random() > 0.4;
-      this.chirp(at, base * (0.9 + Math.random() * 0.25), up ? 1.5 : 0.7, dur, 0.35 + Math.random() * 0.25, pan);
-      at += dur + 0.06 + Math.random() * 0.1;
-    }
-  }
-
-  private scheduleBirds() {
-    window.clearTimeout(this.birdTimer);
-    const next = 3500 + Math.random() * 6500;
-    this.birdTimer = window.setTimeout(() => {
-      if (this.ctx.state === "running") this.phrase();
-      this.scheduleBirds();
-    }, next);
-  }
-
   async on() {
     await this.ctx.resume();
     this.startDrone();
-    this.startBirds();
-    this.scheduleBirds();
     const t = this.ctx.currentTime;
     this.master.gain.cancelScheduledValues(t);
     this.master.gain.setTargetAtTime(0.13, t, 0.9);
   }
 
   off() {
-    window.clearTimeout(this.birdTimer);
     const t = this.ctx.currentTime;
     this.master.gain.cancelScheduledValues(t);
     this.master.gain.setTargetAtTime(0, t, 0.15);
