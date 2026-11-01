@@ -8,7 +8,7 @@ import TLink from "./TLink";
 
 const EXTRA = [
   { label: "About GabbRa", href: "/about" },
-  { label: "About the artist", href: "/artist" },
+  { label: "Who am I?", href: "/artist" },
   { label: "Contact / Commissions", href: "/contact" },
 ];
 

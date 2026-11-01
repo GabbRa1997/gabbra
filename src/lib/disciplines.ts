@@ -54,7 +54,7 @@ const LABELS: Record<string, string> = {
   fpv: "FPV",
   film: "FILM",
   about: "ABOUT",
-  artist: "ABOUT THE ARTIST",
+  artist: "WHO AM I?",
   contact: "CONTACT",
   "selected-works": "SELECTED WORKS",
   prints: "PRINTS",

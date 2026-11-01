@@ -333,21 +333,31 @@ test.describe("Phone — descriptions pop up on the 3D view", () => {
 });
 
 test.describe("Artist", () => {
-  test("a card under the logo leads to the artist page, separate from the three destinations", async ({ page }) => {
+  test("a Who am I card under the logo leads to the artist page, separate from the three destinations", async ({ page }) => {
     await enterSilent(page);
-    const card = page.getByRole("link", { name: /about the artist/i });
+    const card = page.getByRole("link", { name: /who am i/i });
     await expect(card).toBeVisible();
     // it is not one of the three destinations
     await expect(page.getByRole("navigation", { name: /enter a discipline/i }).getByRole("link", { name: /artist/i })).toHaveCount(0);
     await card.click();
     await expect(page).toHaveURL(/\/artist$/);
-    await expect(page.getByRole("heading", { level: 1 })).toContainText(/behind the work/i);
-    await expect(page.getByText("About the artist").first()).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(/who am i/i);
+    await expect(page.getByText("Behind the lens, beyond the frame.").first()).toBeVisible();
   });
 
-  test("About speaks about GabbRa and points to the artist", async ({ page }) => {
+  test("the story page holds the portrait, the full text and a space for the Canon 550D photo", async ({ page }) => {
+    await page.goto("/artist");
+    await expect(page.getByRole("img", { name: /portrait of the artist/i })).toBeVisible();
+    await expect(page.getByText(/photography competition/i)).toBeVisible();
+    await expect(page.getByText(/Canon 550D/i).first()).toBeVisible();
+    await expect(page.getByRole("heading", { name: "The Now" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "GabbRa" })).toBeVisible();
+    await expect(page.getByText(/Welcome to GabbRa/)).toBeVisible();
+  });
+
+  test("About speaks about GabbRa and points to Who am I", async ({ page }) => {
     await page.goto("/about");
     await expect(page.getByRole("heading", { name: /reality, reframed/i })).toBeVisible();
-    await expect(page.getByRole("link", { name: /about the artist/i })).toBeVisible();
+    await expect(page.getByRole("link", { name: /who am i/i })).toBeVisible();
   });
 });

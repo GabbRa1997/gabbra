@@ -201,7 +201,7 @@ export default function Landing() {
               The person behind it
             </span>
             <span className="t-wide mt-1.5 block text-[1.05rem] text-bone/90 transition-colors group-hover:text-[var(--tint)]">
-              About the artist
+              Who am I?
             </span>
           </span>
           <span aria-hidden className="t-label text-bone/40 transition-all group-hover:translate-x-1 group-hover:text-[var(--tint)]">

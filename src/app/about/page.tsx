@@ -32,9 +32,9 @@ export default function About() {
       </ul>
 
       <p className="mt-12 text-bone/55">
-        Looking for the person behind it?{" "}
+        Curious about the person behind it?{" "}
         <TLink href="/artist" variant="fade" className="text-[var(--tint)] underline underline-offset-4">
-          About the artist
+          Who am I?
         </TLink>
         .
       </p>
