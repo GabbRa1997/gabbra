@@ -3,7 +3,7 @@
  * No projects, clients, awards or testimonials are invented here.
  */
 
-export type FpvSectionSlug = "flight-reels" | "perspectives" | "technical-experiments" | "projects";
+export type FpvSectionSlug = "flight-reels" | "drones-owned";
 
 export interface FpvSection {
   slug: FpvSectionSlug;
@@ -25,36 +25,23 @@ export const FPV_SECTIONS: FpvSection[] = [
     lead: "What the camera saw, played back at full screen, at full speed.",
   },
   {
-    slug: "perspectives",
+    slug: "drones-owned",
     n: "02",
-    title: "Perspectives",
-    part: "goggles",
-    blurb: "Aerial and environmental visual projects.",
-    lead: "The view from the pilot's seat, which is no seat at all.",
-  },
-  {
-    slug: "technical-experiments",
-    n: "03",
-    title: "Technical Experiments",
-    part: "fc",
-    blurb: "Configurations, flight development, experiments.",
-    lead: "Builds, tunes and tests: the engineering behind the footage.",
-  },
-  {
-    slug: "projects",
-    n: "04",
-    title: "Projects",
+    title: "Drones Owned",
     part: "frame-bottom",
-    blurb: "Completed and ongoing FPV commissions.",
-    lead: "The work the frame was built to carry.",
+    blurb: "A technical sheet for every drone in the hangar.",
+    lead: "Each machine, with its build and specification.",
   },
 ];
 
-export const BUILD_SHEET = [
-  { label: "Class", value: "5 inch freestyle", placeholder: false },
-  { label: "Video", value: "Analog 5.8 GHz", placeholder: false },
-  { label: "Control link", value: "ExpressLRS 2.4 GHz", placeholder: false },
-  { label: "Power", value: "6S LiPo", placeholder: false },
-  { label: "All-up weight", value: "To be supplied", placeholder: true },
-  { label: "Flight time", value: "To be supplied", placeholder: true },
+/** the fields every drone's technical sheet will carry */
+export const DRONE_SHEET_FIELDS = [
+  "Class",
+  "Frame",
+  "Motors",
+  "Flight controller / ESC",
+  "Video system",
+  "Control link",
+  "Battery",
+  "All-up weight",
 ];

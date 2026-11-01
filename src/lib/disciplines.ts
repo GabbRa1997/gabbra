@@ -58,8 +58,9 @@ const LABELS: Record<string, string> = {
   contact: "CONTACT",
   "selected-works": "SELECTED WORKS",
   prints: "PRINTS",
-  "behind-the-lens": "BEHIND THE LENS",
   experiments: "EXPERIMENTS",
+  "drones-owned": "DRONES OWNED",
+  "flight-reels": "FLIGHT REELS",
 };
 
 export function breadcrumbFromPath(pathname: string): string[] {

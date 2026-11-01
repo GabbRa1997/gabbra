@@ -18,6 +18,9 @@ export default function SiteHeader() {
   const menuBtn = useRef<HTMLButtonElement>(null);
   const here = disciplineFromPath(pathname);
   const crumbs = breadcrumbFromPath(pathname);
+  // one step up: a project goes back to its section, a section to its discipline, the rest to the start
+  const parts = pathname.split("/").filter(Boolean);
+  const backHref = parts.length > 1 ? `/${parts.slice(0, -1).join("/")}` : "/";
 
   // The landing page is its own experience and carries its own chrome.
   const hidden = pathname === "/";
@@ -59,21 +62,31 @@ export default function SiteHeader() {
               className="h-5 w-auto md:h-6"
             />
           </TLink>
-          <nav aria-label="Breadcrumb" className="mt-3 hidden md:block">
-            <ol className="t-label flex gap-3 text-steel">
-              {crumbs.map((c, i) => (
-                <li key={i} className="flex gap-3">
-                  {i > 0 && <span aria-hidden className="text-bone/30">/</span>}
-                  <span
-                    aria-current={i === crumbs.length - 1 ? "page" : undefined}
-                    className={i === crumbs.length - 1 ? "text-[var(--tint)]" : ""}
-                  >
-                    {c}
-                  </span>
-                </li>
-              ))}
-            </ol>
-          </nav>
+          <div className="mt-3 flex items-center gap-4">
+            <TLink
+              href={backHref}
+              variant="fade"
+              aria-label={parts.length > 1 ? "Back one level" : "Back to the main experience"}
+              className="t-label flex h-8 w-8 items-center justify-center border border-line text-bone/70 transition-colors hover:border-[var(--tint)] hover:text-[var(--tint)] focus-visible:border-[var(--tint)] focus-visible:text-[var(--tint)]"
+            >
+              <span aria-hidden>←</span>
+            </TLink>
+            <nav aria-label="Breadcrumb" className="hidden md:block">
+              <ol className="t-label flex gap-3 text-steel">
+                {crumbs.map((c, i) => (
+                  <li key={i} className="flex gap-3">
+                    {i > 0 && <span aria-hidden className="text-bone/30">/</span>}
+                    <span
+                      aria-current={i === crumbs.length - 1 ? "page" : undefined}
+                      className={i === crumbs.length - 1 ? "text-[var(--tint)]" : ""}
+                    >
+                      {c}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
         </div>
 
         <div className="pointer-events-auto flex items-center gap-6 md:gap-9">

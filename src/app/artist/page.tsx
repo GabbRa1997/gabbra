@@ -140,8 +140,8 @@ export default function Artist() {
       </section>
 
       <nav aria-label="Next" className="mt-20 flex flex-wrap gap-x-8 gap-y-3 border-t border-line pt-8">
-        <TLink href="/photo/behind-the-lens" className="t-label text-bone/70 hover:text-[var(--tint)]">
-          Equipment and approach →
+        <TLink href="/photo/selected-works" className="t-label text-bone/70 hover:text-[var(--tint)]">
+          Selected works →
         </TLink>
         <TLink href="/contact" variant="fade" className="t-label text-bone/70 hover:text-[var(--tint)]">
           Commission enquiries →

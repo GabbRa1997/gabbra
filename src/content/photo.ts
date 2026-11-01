@@ -7,7 +7,6 @@
 export type PhotoSectionSlug =
   | "selected-works"
   | "prints"
-  | "behind-the-lens"
   | "experiments";
 
 export interface PhotoSection {
@@ -38,16 +37,8 @@ export const PHOTO_SECTIONS: PhotoSection[] = [
     lead: "Where the image leaves the sensor and becomes an object.",
   },
   {
-    slug: "behind-the-lens",
-    n: "03",
-    title: "Behind the Lens",
-    part: "pentamirror",
-    blurb: "Story, approach and equipment.",
-    lead: "The view from the viewfinder: how and why the pictures get made.",
-  },
-  {
     slug: "experiments",
-    n: "04",
+    n: "03",
     title: "Experiments",
     part: "shutter",
     blurb: "Challenges, ongoing projects, visual exploration.",
@@ -62,11 +53,4 @@ export const PLACEHOLDER_SUBJECTS = [
   "Subject 04",
   "Subject 05",
   "Subject 06",
-];
-
-export const EQUIPMENT = [
-  { label: "Camera", value: "Canon EOS 550D", placeholder: false },
-  { label: "Lenses", value: "To be supplied", placeholder: true },
-  { label: "Accessories", value: "To be supplied", placeholder: true },
-  { label: "Software", value: "To be supplied", placeholder: true },
 ];

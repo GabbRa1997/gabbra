@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import TLink from "@/components/shell/TLink";
 import { PageFrame, Placeholder } from "@/components/shell/PageFrame";
-import { BUILD_SHEET, FPV_SECTIONS, type FpvSectionSlug } from "@/content/fpv";
+import { DRONE_SHEET_FIELDS, FPV_SECTIONS, type FpvSectionSlug } from "@/content/fpv";
 
 type Params = { section: string };
 
@@ -40,49 +40,25 @@ export default async function FpvSectionPage({ params }: { params: Promise<Param
 }
 
 function Body({ slug }: { slug: FpvSectionSlug }) {
-  if (slug === "technical-experiments") {
+  if (slug === "drones-owned") {
     return (
-      <div className="grid gap-16 md:grid-cols-[1.4fr_1fr]">
-        <div className="grid gap-6 sm:grid-cols-2">
-          {["Build 01", "Build 02", "Build 03", "Build 04"].map((n) => (
-            <Placeholder key={n} label={n} ratio="4 / 3" note="Placeholder — build log" />
-          ))}
-        </div>
-        <dl className="h-fit divide-y divide-line border-y border-line">
-          {BUILD_SHEET.map((e) => (
-            <div key={e.label} className="flex items-baseline justify-between gap-6 py-4">
-              <dt className="t-label text-steel">{e.label}</dt>
-              <dd className={e.placeholder ? "text-bone/35" : "text-bone"}>{e.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    );
-  }
-
-  if (slug === "projects") {
-    return (
-      <ul className="divide-y divide-line border-y border-line">
-        {["Commission 01", "Commission 02", "Commission 03"].map((n, i) => (
-          <li key={n} className="grid items-baseline gap-2 py-6 md:grid-cols-[6rem_1fr_auto] md:gap-8">
-            <span className="t-label text-steel">{String(i + 1).padStart(2, "0")}</span>
-            <span className="t-wide text-[clamp(1.5rem,3vw,2.5rem)] text-bone/60">{n}</span>
-            <span className="t-label text-bone/35">Client · year · status · to be supplied</span>
+      <ul className="grid gap-x-8 gap-y-16 md:grid-cols-2">
+        {["Drone 01", "Drone 02", "Drone 03"].map((n) => (
+          <li key={n}>
+            <Placeholder label={n} ratio="4 / 3" note="Placeholder — photo of the drone" />
+            <h2 className="t-wide mt-5 text-[1.5rem] text-bone/70">{n}</h2>
+            <p className="t-label mt-1 text-[0.62rem] text-bone/35">Name and build to be supplied</p>
+            <dl className="mt-4 divide-y divide-line border-y border-line">
+              {DRONE_SHEET_FIELDS.map((f) => (
+                <div key={f} className="flex items-baseline justify-between gap-6 py-3">
+                  <dt className="t-label text-steel">{f}</dt>
+                  <dd className="text-bone/35">To be supplied</dd>
+                </div>
+              ))}
+            </dl>
           </li>
         ))}
       </ul>
-    );
-  }
-
-  if (slug === "perspectives") {
-    return (
-      <div className="grid gap-6">
-        <Placeholder label="Perspective 01" ratio="21 / 9" note="Placeholder — aerial or environmental image" />
-        <div className="grid gap-6 sm:grid-cols-2">
-          <Placeholder label="Perspective 02" ratio="16 / 10" />
-          <Placeholder label="Perspective 03" ratio="16 / 10" />
-        </div>
-      </div>
     );
   }
 

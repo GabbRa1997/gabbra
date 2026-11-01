@@ -10,7 +10,6 @@ import { FILM_CLIPS, type FilmClip } from "@/lib/media";
 export type FilmSectionSlug =
   | "short-films"
   | "commercial-creative"
-  | "visual-stories"
   | "collaborations";
 
 export interface Credit {
@@ -72,15 +71,6 @@ const DEFS: {
     blurb: "Work made for a brief.",
     lead: "Commissioned and self-initiated pieces, with the production context alongside.",
     roles: ["Client", "Producer", "Director", "Cinematography", "Edit & grade"],
-  },
-  {
-    slug: "visual-stories",
-    code: "VS",
-    title: "Visual Stories",
-    singular: "Visual Story",
-    blurb: "Pictures that move, with intent.",
-    lead: "Short, image-led pieces where mood and movement carry the story.",
-    roles: ["Concept", "Cinematography", "Edit", "Sound"],
   },
   {
     slug: "collaborations",

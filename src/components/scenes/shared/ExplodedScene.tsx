@@ -10,6 +10,9 @@ import { SceneCtx, type PartLike, type SceneState } from "./sceneContext";
 
 export type Quality = "full" | "lite";
 
+const DPR_FULL: [number, number][] = [[1, 2], [1, 1.5], [1, 1.25]];
+const DPR_LITE: [number, number][] = [[1.5, 2], [1.25, 1.75], [1, 1.5]];
+
 /** What a page hands to the scene each render. */
 export interface SceneProps {
   quality: Quality;
@@ -161,7 +164,11 @@ export default function ExplodedScene(props: SceneProps & SceneConfig) {
   const asm = useRef<THREE.Group | null>(null);
   const float = useRef<THREE.Group | null>(null);
   const controls = useRef<OrbitControlsImpl | null>(null);
-  const [dpr, setDpr] = useState<[number, number]>(quality === "full" ? [1, 1.75] : [1, 1.25]);
+  // Resolution steps: start sharp, give a little back only when the frame rate really suffers,
+  // and win it back when it recovers. Phones start high because their screens are dense.
+  const tiers = quality === "full" ? DPR_FULL : DPR_LITE;
+  const [tier, setTier] = useState(0);
+  const dpr = tiers[Math.min(tier, tiers.length - 1)];
 
   const api = useMemo(
     () => ({ state, registry, mats, accent, onSelect, onHover }),
@@ -181,11 +188,11 @@ export default function ExplodedScene(props: SceneProps & SceneConfig) {
     <Canvas
       dpr={dpr}
       camera={{ fov: portrait ? FOV_PORTRAIT : FOV_LANDSCAPE, near: 0.5, far: 700, position: camPos }}
-      gl={{ antialias: quality === "full", alpha: true, powerPreference: "high-performance" }}
+      gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       onPointerMissed={onMissed}
       style={{ touchAction: "none" }}
     >
-      <PerformanceMonitor onDecline={() => setDpr([1, 1])} />
+      <PerformanceMonitor onDecline={() => setTier((t) => Math.min(t + 1, tiers.length - 1))} onIncline={() => setTier((t) => Math.max(t - 1, 0))} />
       <SceneCtx.Provider value={api}>
         <Suspense fallback={null}>
           <Environment resolution={256} frames={1}>

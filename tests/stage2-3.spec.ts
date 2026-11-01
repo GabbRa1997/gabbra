@@ -75,8 +75,8 @@ test.describe("Photography — 550D", () => {
     await expect(page.getByRole("button", { name: /^assemble$/i })).toBeVisible();
   });
 
-  test("all four destinations exist with placeholders, not invented work", async ({ page }) => {
-    for (const slug of ["selected-works", "prints", "behind-the-lens", "experiments"]) {
+  test("all three destinations exist with placeholders, not invented work", async ({ page }) => {
+    for (const slug of ["selected-works", "prints", "experiments"]) {
       await page.goto(`/photo/${slug}`);
       await expect(page.locator("h1")).toBeVisible();
       const real = (slug === "selected-works" && hasPhotos) || (slug === "prints" && hasPrints);
@@ -148,8 +148,9 @@ test.describe("FPV — 5-inch quad", () => {
     const panel = page.locator("aside");
     await expect(panel).toContainText("Flight controller");
     await expect(panel).toContainText(/Betaflight/);
-    await page.getByRole("link", { name: /Enter Technical Experiments/ }).click();
-    await expect(page).toHaveURL(/\/fpv\/technical-experiments$/);
+    await page.getByRole("button", { name: /FPV camera/ }).click();
+    await page.getByRole("link", { name: /Enter Flight Reels/ }).click();
+    await expect(page).toHaveURL(/\/fpv\/flight-reels$/);
   });
 
   test("the goggles are part of the scene and can be inspected", async ({ page }) => {
@@ -157,11 +158,11 @@ test.describe("FPV — 5-inch quad", () => {
     await expect(page.locator("canvas")).toBeVisible({ timeout: 20_000 });
     await page.getByRole("button", { name: /FPV goggles/ }).click();
     await expect(page.locator("aside")).toContainText("The pilot's window");
-    await expect(page.getByRole("link", { name: /Enter Perspectives/ })).toBeVisible();
+    await expect(page.getByRole("link", { name: /Enter (Flight Reels|Drones Owned)/ })).toHaveCount(0);
   });
 
-  test("all four FPV destinations exist with placeholders", async ({ page }) => {
-    for (const slug of ["flight-reels", "perspectives", "technical-experiments", "projects"]) {
+  test("both FPV destinations exist with placeholders", async ({ page }) => {
+    for (const slug of ["flight-reels", "drones-owned"]) {
       await page.goto(`/fpv/${slug}`);
       await expect(page.locator("h1")).toBeVisible();
       await expect(page.getByText(/placeholder|to be supplied/i).first()).toBeVisible();
@@ -184,16 +185,16 @@ test.describe("FPV — 5-inch quad", () => {
 });
 
 test.describe("Film — frames in sequence", () => {
-  test("the hub offers four reels and a scrubbable timeline", async ({ page }) => {
+  test("the hub offers three reels and a scrubbable timeline", async ({ page }) => {
     await page.goto("/film");
     await expect(page.getByRole("heading", { name: /frames, in sequence/i })).toBeVisible();
     const nav = page.getByRole("navigation", { name: "Film" });
-    for (const t of ["Short Films", "Commercial & Creative Work", "Visual Stories", "Collaborations"]) {
+    for (const t of ["Short Films", "Commercial & Creative Work", "Collaborations"]) {
       await expect(nav.getByRole("link", { name: new RegExp(t.replace("&", "&")) })).toBeVisible();
     }
     // choosing a chapter jumps the strip, and the timeline follows
     const timeline = page.getByRole("slider", { name: /scrub the film strip/i });
-    await page.getByRole("button", { name: /VS · Visual Stories/ }).click();
+    await page.getByRole("button", { name: /CO · Collaborations/ }).click();
     await expect.poll(async () => parseFloat(await timeline.inputValue())).toBeGreaterThan(0.4);
   });
 
@@ -229,7 +230,7 @@ test.describe("Film — frames in sequence", () => {
   });
 
   test("every section and project page exists", async ({ page }) => {
-    for (const s of ["short-films", "commercial-creative", "visual-stories", "collaborations"]) {
+    for (const s of ["short-films", "commercial-creative", "collaborations"]) {
       await page.goto(`/film/${s}`);
       await expect(page.locator("h1")).toBeVisible();
       await page.locator("main ul a").last().click();
@@ -359,5 +360,25 @@ test.describe("Artist", () => {
     await page.goto("/about");
     await expect(page.getByRole("heading", { name: /reality, reframed/i })).toBeVisible();
     await expect(page.getByRole("link", { name: /who am i/i })).toBeVisible();
+  });
+});
+
+test.describe("Back arrow", () => {
+  test("every inner page has a back arrow that goes one level up", async ({ page }) => {
+    // a path through pages without a 3D scene, so the test measures the arrow and not the GPU
+    await page.goto("/film/collaborations/project-01");
+    await page.getByRole("link", { name: /back one level/i }).click();
+    await expect(page).toHaveURL(/\/film\/collaborations$/);
+    await page.getByRole("link", { name: /back one level/i }).click();
+    await expect(page).toHaveURL(/\/film$/);
+    await page.getByRole("link", { name: /back to the main experience/i }).click();
+    await expect(page).toHaveURL(/\/$/);
+  });
+
+  test("removed sections are gone", async ({ page }) => {
+    for (const u of ["/photo/behind-the-lens", "/film/visual-stories", "/fpv/perspectives"]) {
+      const r = await page.goto(u);
+      expect(r?.status()).toBe(404);
+    }
   });
 });

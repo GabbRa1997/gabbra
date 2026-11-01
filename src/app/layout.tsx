@@ -20,6 +20,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gabbra.net"),
   title: { default: "GabbRa — Photo / FPV / Film", template: "%s — GabbRa" },
   description:
     "GabbRa is an independent creative practice across photography, FPV and film. Reality, reframed.",

@@ -6,7 +6,6 @@ import TLink from "@/components/shell/TLink";
 import { PHOTO_PROJECTS, PRINTS } from "@/lib/media";
 import { PageFrame, Placeholder } from "@/components/shell/PageFrame";
 import {
-  EQUIPMENT,
   PHOTO_SECTIONS,
   PLACEHOLDER_SUBJECTS,
   type PhotoSectionSlug,
@@ -48,28 +47,6 @@ export default async function PhotoSectionPage({ params }: { params: Promise<Par
 }
 
 function Body({ slug }: { slug: PhotoSectionSlug }) {
-  if (slug === "behind-the-lens") {
-    return (
-      <div className="grid gap-16 md:grid-cols-[1.4fr_1fr]">
-        <div className="space-y-6 text-lg leading-relaxed text-bone/70">
-          <p className="t-label text-steel">Personal story · placeholder</p>
-          <p>Your story goes here: where the photography began, what you look for, and why perspective is the subject.</p>
-          <p className="text-bone/40">
-            This text is a stand-in. Supply a few paragraphs and it will be set here in full measure.
-          </p>
-        </div>
-        <dl className="divide-y divide-line border-y border-line">
-          {EQUIPMENT.map((e) => (
-            <div key={e.label} className="flex items-baseline justify-between gap-6 py-4">
-              <dt className="t-label text-steel">{e.label}</dt>
-              <dd className={e.placeholder ? "text-bone/35" : "text-bone"}>{e.value}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    );
-  }
-
   if (slug === "prints" && PRINTS.length > 0) {
     return (
       <div className="grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">

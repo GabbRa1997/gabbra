@@ -309,7 +309,6 @@ export const PARTS: PartDef[] = [
     exploded: [0, 8.6, -3.2],
     delay: 0.5,
     focus: 10,
-    section: "behind-the-lens",
   },
   {
     id: "shutter",

@@ -26,7 +26,7 @@ export const PARTS: PartInfo[] = [
     exploded: [0, 0.25, 0],
     delay: 0,
     focus: 20,
-    section: "projects",
+    section: "drones-owned",
   },
   {
     id: "standoffs",
@@ -79,7 +79,6 @@ export const PARTS: PartInfo[] = [
     exploded: [0, 8.4, 0],
     delay: 0.4,
     focus: 9,
-    section: "technical-experiments",
   },
   {
     id: "vtx",
@@ -224,7 +223,6 @@ export const PARTS: PartInfo[] = [
     exploded: [14, 5, -34],
     delay: 0,
     focus: 18,
-    section: "perspectives",
   },
 ];
 
