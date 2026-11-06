@@ -64,60 +64,680 @@
           "src": "/media/photo/spot-colouring-project/1-2400.webp"
         },
         {
-          "id": "3",
-          "file": "3.jpg",
-          "alt": "Black-and-white silhouette of a lighthouse at the end of a rocky pier, with two figures and benches beneath a tall twin-pole mast.",
-          "w": 3399,
-          "h": 5099,
-          "blur": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAABwBQCdASoYACQAPxGEtlUsKKSjKrgIAYAiCWkAAP4g4uAf6a/Rxrvu7HQhGIvtNsdQLNKAAP7q2ASTTyaHy8AIBnm+sFaiLpn1J0qh+NwpH1E6o7DuRld4tuwJLpR0WuZh5hVjXuE0KFCFj+V0MpTSzAAAAA==",
-          "color": "#d8d8d8",
+          "id": "mg-3192",
+          "file": "_MG_3192.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3456,
+          "h": 5184,
+          "blur": "data:image/webp;base64,UklGRnACAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggggAAALAFAJ0BKhgAJAA/CXKsUCunJCK1WAgBcCEJZwAAOHKmAVXVkUsRKGB092t6bR918TOKFCnWAAD+7q8ytrXqMjWiEcN+VbpDVxkhL2OkL63APtD4VIT+gqLtSBMSRnskUutklIlqMvGoqzzUGQIJoWJiue6+8lv+co2etxs+xNkwAAA=",
+          "color": "#373636",
           "srcset": [
             {
               "w": 480,
-              "url": "/media/photo/spot-colouring-project/3-480.webp"
+              "url": "/media/photo/spot-colouring-project/mg-3192-480.webp"
             },
             {
               "w": 960,
-              "url": "/media/photo/spot-colouring-project/3-960.webp"
+              "url": "/media/photo/spot-colouring-project/mg-3192-960.webp"
             },
             {
               "w": 1600,
-              "url": "/media/photo/spot-colouring-project/3-1600.webp"
+              "url": "/media/photo/spot-colouring-project/mg-3192-1600.webp"
             },
             {
               "w": 2400,
-              "url": "/media/photo/spot-colouring-project/3-2400.webp"
+              "url": "/media/photo/spot-colouring-project/mg-3192-2400.webp"
             }
           ],
-          "src": "/media/photo/spot-colouring-project/3-2400.webp"
+          "src": "/media/photo/spot-colouring-project/mg-3192-2400.webp"
         },
         {
-          "id": "4",
-          "file": "4.jpg",
-          "alt": "A gull in flight against a pale sky with a few wisps of cloud, in black and white.",
-          "w": 5184,
-          "h": 3456,
-          "blur": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAADQAgCdASoYABAAPxF0sVA/pySisAgD8CIJaQAAfj4AAOQ+6wrUNjqStxQcAAAA",
-          "color": "#888888",
+          "id": "mg-3379",
+          "file": "_MG_3379.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3338,
+          "h": 5007,
+          "blur": "data:image/webp;base64,UklGRn4CAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggkAAAADAFAJ0BKhgAJAA/EXa2UawnJSKquAwBgCIJaQAAH0dtNMwJ9TnMfsgiT7RiV15e9SEAAOJ/XVKpQNKVJkIgRy8SMQa5ZifmCFs1QoNGMS2Lc2iKgXwFc2SQAd0lR7mYQSjC4LyfakedBqcAd3HTXr+xkKdYB+pfuFKH/vsHGzv5YHtqnoXv1CNZbB7Z2AAAAA==",
+          "color": "#202020",
           "srcset": [
             {
               "w": 480,
-              "url": "/media/photo/spot-colouring-project/4-480.webp"
+              "url": "/media/photo/spot-colouring-project/mg-3379-480.webp"
             },
             {
               "w": 960,
-              "url": "/media/photo/spot-colouring-project/4-960.webp"
+              "url": "/media/photo/spot-colouring-project/mg-3379-960.webp"
             },
             {
               "w": 1600,
-              "url": "/media/photo/spot-colouring-project/4-1600.webp"
+              "url": "/media/photo/spot-colouring-project/mg-3379-1600.webp"
             },
             {
               "w": 2400,
-              "url": "/media/photo/spot-colouring-project/4-2400.webp"
+              "url": "/media/photo/spot-colouring-project/mg-3379-2400.webp"
             }
           ],
-          "src": "/media/photo/spot-colouring-project/4-2400.webp"
+          "src": "/media/photo/spot-colouring-project/mg-3379-2400.webp"
+        },
+        {
+          "id": "mg-4687",
+          "file": "_MG_4687.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3456,
+          "h": 5184,
+          "blur": "data:image/webp;base64,UklGRqoCAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggvAAAALAGAJ0BKhgAJAA/EW6wUCwmJKKwGqqpgCIJaQAAMmu9Pk9vLRjZL5DAi+fDcsBX8jxY/koRPRCtXZRDirKAAP65+d50RXT+/sFQ5sNtZMDorJ3jobrdbzsl1/3Prg7D43hzcjejk2qZ28ztFUfHOL2g/BetCnXrgSsiO31T7T4/27xwjpL7cSwF9NSx1+2S9p+8N/Hnr7aGuQyF+fHB5QPxoYJAX8wpdWfjqiGJsR4yT/1j3PvPL5mAAAAA",
+          "color": "#373736",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/mg-4687-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/mg-4687-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/mg-4687-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/mg-4687-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/mg-4687-2400.webp"
+        },
+        {
+          "id": "mg-4717",
+          "file": "_MG_4717.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 2493,
+          "h": 3740,
+          "blur": "data:image/webp;base64,UklGRrICAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggxAAAAJAGAJ0BKhgAJAA/BWyrUCumI6K1W/gBcCCJZwAIGKPBhHLgqF5JIwp94+Q8BkuDDk5UKhp6WFySBvlKvYgA/tsw85Fq2MfrMOR2IwvrVL53HjYB7QzXsRfX1C3jh6AEP2f4sdx8dg7BliwCNWnz6TZrlSuYKE6cqwBzEN5umQEBcV7X72qBGRsP7tSyhigZgHcNxcBNxjwhgDk7LR8fHEZ/pvcVmyB3PghAxL3YX0u/PyweYINzwMafIvh8Qe4YEh+AAAA=",
+          "color": "#5c5b5b",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/mg-4717-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/mg-4717-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/mg-4717-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/mg-4717-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/mg-4717-2400.webp"
+        },
+        {
+          "id": "mg-4897",
+          "file": "_MG_4897.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3393,
+          "h": 5089,
+          "blur": "data:image/webp;base64,UklGRkwCAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggXgAAAJAEAJ0BKhgAJAA/DW6tUCwmJCK1WAgBgCGJZwAAEretwan8d/2IFf9rylWtQADlfWnpRWPDiDVmMcEH6DbwyRULAN5/F3rrq+t5JdjoctLtvvnEVDIt6dFLax0YAAA=",
+          "color": "#505252",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/mg-4897-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/mg-4897-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/mg-4897-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/mg-4897-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/mg-4897-2400.webp"
+        },
+        {
+          "id": "2d7f14f5-5a91-4bb2-bb0d-8c437d119561",
+          "file": "2D7F14F5-5A91-4BB2-BB0D-8C437D119561.jpeg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 1162,
+          "h": 1546,
+          "blur": "data:image/webp;base64,UklGRvICAABXRUJQVlA4WAoAAAAgAAAAFwAAHwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggBAEAABAGAJ0BKhgAIAA/EXayUqwnJKKwGAgBgCIJQBkNAqSN9SgF3ORgGc8/9XsvaeSF+50xx1rUeNUvUAD+7AAIkNxMFNSekcNXtA3KnjINXpqWvMYsFJ+62ymr3VIwnLfAJHfxNxXNf/PubD1NuVyjg3zTJZOKHvc4XgZVwK4e9N8s0TO3lzhVzk0eQnfgTetNwTEUA4Ekbc5V3B2tPlF3yA8zamHojBcbg7UnidAPWZdQDVYahMj3NHyw1T/TQbDqNsH/nrbybI/27nUULEUz01Jvq5nAmnPG/6u55BSomns5374/F7FBRWXx1626kpn4Kxe95rqMmLik3kGVP/ioQL96wQAA",
+          "color": "#383326",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/2d7f14f5-5a91-4bb2-bb0d-8c437d119561-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/2d7f14f5-5a91-4bb2-bb0d-8c437d119561-960.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/2d7f14f5-5a91-4bb2-bb0d-8c437d119561-960.webp"
+        },
+        {
+          "id": "9c0be21a-3924-4329-ad5d-2b8c5a769a98",
+          "file": "9C0BE21A-3924-4329-AD5D-2B8C5A769A98.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3793,
+          "h": 3010,
+          "blur": "data:image/webp;base64,UklGRloCAABXRUJQVlA4WAoAAAAgAAAAFwAAEgAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggbAAAALAEAJ0BKhgAEwA/EXSuUCwnJCKwCAGAIglpAABdy8xYWT2Tmcr4WfPc2nKXr3AA/sSs5Vo6Z/Mk6LXR1cdmwAPgcZikUT7d5H5o3VGjZpBz0XATWqobiBgYC5tDFIM7dqLNfFRCQDgEB0AAAA==",
+          "color": "#696969",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/9c0be21a-3924-4329-ad5d-2b8c5a769a98-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/9c0be21a-3924-4329-ad5d-2b8c5a769a98-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/9c0be21a-3924-4329-ad5d-2b8c5a769a98-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/9c0be21a-3924-4329-ad5d-2b8c5a769a98-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/9c0be21a-3924-4329-ad5d-2b8c5a769a98-2400.webp"
+        },
+        {
+          "id": "9e7723aa-4f92-4e0b-95cd-724c2ef77f96",
+          "file": "9E7723AA-4F92-4E0B-95CD-724C2EF77F96.jpeg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3024,
+          "h": 4032,
+          "blur": "data:image/webp;base64,UklGRnQCAABXRUJQVlA4WAoAAAAgAAAAFwAAHwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDgghgAAAJAFAJ0BKhgAIAA/EXSsUKwmpCKwGAwBgCIJZAAA83/vqVspIffRHlA7E8/BCyBs3vwG2r0AAP00MY1hllQ0Kq9IsEaZ9if8E8CSpiJrNQ8UJIg/iyYPkhN0gcxDUIbeQwF3a/KTj7S73zZAwJTPNzuvO8I3ZPhwi+dR+UBGZKYznRIFAAAA",
+          "color": "#464e50",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/9e7723aa-4f92-4e0b-95cd-724c2ef77f96-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/9e7723aa-4f92-4e0b-95cd-724c2ef77f96-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/9e7723aa-4f92-4e0b-95cd-724c2ef77f96-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/9e7723aa-4f92-4e0b-95cd-724c2ef77f96-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/9e7723aa-4f92-4e0b-95cd-724c2ef77f96-2400.webp"
+        },
+        {
+          "id": "3667c42c-bace-45ec-96ae-4d611721124b",
+          "file": "3667C42C-BACE-45EC-96AE-4D611721124B.jpeg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 1686,
+          "h": 2529,
+          "blur": "data:image/webp;base64,UklGRtICAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDgg5AAAAHAGAJ0BKhgAJAA/EYS5VywoJaOlaAGAIglAAQNFKKv1rkgQZj2pZLmaPmN6rbRUMp1rF1K8ZxHwGY/fgAD+9wIVPHxSmZL91r/qna4/UIVfa4EFAwLKJUVTiDO+Omj39xPmF6s/99Rt6zL9y8EDMeF7r8HYMrtaakSuIatNA3YUFYIg9V0f/cU/0P+LaO3ugPA/3MfotPcUH4XyZta/zmJNLuuPqUfLKN3iaW3YMFXrN3pAmlTfpOHZ/mYsziuVbqoAJos/rZ4I7viF9SD4pcuzazkcKibT2YXGUXyoMgHoAAAAAA==",
+          "color": "#8d8b8b",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/3667c42c-bace-45ec-96ae-4d611721124b-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/3667c42c-bace-45ec-96ae-4d611721124b-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/3667c42c-bace-45ec-96ae-4d611721124b-1600.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/3667c42c-bace-45ec-96ae-4d611721124b-1600.webp"
+        },
+        {
+          "id": "21694d7d-40a8-4724-8a1a-d7eac01dc50f",
+          "file": "21694D7D-40A8-4724-8A1A-D7EAC01DC50F.jpeg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 2926,
+          "h": 3901,
+          "blur": "data:image/webp;base64,UklGRuwCAABXRUJQVlA4WAoAAAAgAAAAFwAAHwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDgg/gAAAFAGAJ0BKhgAIAA/EXiwUiwnJCKwGAgBgCIJZQAGaBVLJbS0pXpGTEuQFcg881LnnJy7DHiaSFCUmzIAAPi1kQDn0YSC152G8bM00qZtPdXorbf1bFi4XG3MHw2TUSZr7LgNPaUiAKrEP1lGCXz8aL6OgFx2X3EGvRCqZKR2LJvIuBrU8R2TWU6Z0rwZl8xhJYvnB7wwujmOP3Qk8A+uW2x24cUN66e9TTBIZpydRXnnXTTXXuwnf/93FB34XDfMhirhjjJhVBZjVp+vhesE09SGVr23N3xTdh8eY58WO1S5wc4QFOqT5rZ4Ykl4yYd/1/fW/q6X/LJWc7CymAAA",
+          "color": "#686464",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/21694d7d-40a8-4724-8a1a-d7eac01dc50f-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/21694d7d-40a8-4724-8a1a-d7eac01dc50f-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/21694d7d-40a8-4724-8a1a-d7eac01dc50f-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/21694d7d-40a8-4724-8a1a-d7eac01dc50f-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/21694d7d-40a8-4724-8a1a-d7eac01dc50f-2400.webp"
+        },
+        {
+          "id": "35453fea-855c-4c62-a00b-57241d80719e",
+          "file": "35453fea-855c-4c62-a00b-57241d80719e.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 1550,
+          "h": 1012,
+          "blur": "data:image/webp;base64,UklGRkYCAABXRUJQVlA4WAoAAAAgAAAAFwAADwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggWAAAANADAJ0BKhgAEAA/EXKwUCwmpKKwCAGAIgllAMfkI+D7qSLsHQmdAAD+3GgMrBziYbrmUGyCyeyZKFqT0U38ojCYhj4674gs3885rcGaCRJEbKD+etUwAAA=",
+          "color": "#454b45",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/35453fea-855c-4c62-a00b-57241d80719e-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/35453fea-855c-4c62-a00b-57241d80719e-960.webp"
+            },
+            {
+              "w": 1550,
+              "url": "/media/photo/spot-colouring-project/35453fea-855c-4c62-a00b-57241d80719e-1550.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/35453fea-855c-4c62-a00b-57241d80719e-1550.webp"
+        },
+        {
+          "id": "ad3467ac-530d-489d-b905-a580bbd64e46",
+          "file": "ad3467ac-530d-489d-b905-a580bbd64e46.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 1600,
+          "h": 1065,
+          "blur": "data:image/webp;base64,UklGRl4CAABXRUJQVlA4WAoAAAAgAAAAFwAADwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggcAAAANADAJ0BKhgAEAA/EXKwUCwmpKKwCAGAIglpAAPkOUP9jfTawisgAAD+6/4ZQw4gQGHdbYl+WIuXAJyUmc+4qiijkvOv2ZvxT0ssc9CJg+AzRRD+HdWWF9OdK5R+pXHD10OtCVTZ13le6pmsVSgAAAA=",
+          "color": "#676666",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/ad3467ac-530d-489d-b905-a580bbd64e46-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/ad3467ac-530d-489d-b905-a580bbd64e46-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/ad3467ac-530d-489d-b905-a580bbd64e46-1600.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/ad3467ac-530d-489d-b905-a580bbd64e46-1600.webp"
+        },
+        {
+          "id": "c4ad98ce-8404-4031-a824-f4e6d7daff01",
+          "file": "c4ad98ce-8404-4031-a824-f4e6d7daff01.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 1521,
+          "h": 927,
+          "blur": "data:image/webp;base64,UklGRlwCAABXRUJQVlA4WAoAAAAgAAAAFwAADgAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggbgAAADADAJ0BKhgADwA/EXKwUCwmpKKwCAGAIglpAAAITo7RMYAAyXAfRPLUqAU5zBqp8JQHGhg7py1qcEusG3Rr3TftUBb2A9mNTZsXx1mkigm7OzpZrWWDr+Pevzw+zauCYlK9dNpJEb5ns2dPsAAA",
+          "color": "#7a7a7a",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/c4ad98ce-8404-4031-a824-f4e6d7daff01-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/c4ad98ce-8404-4031-a824-f4e6d7daff01-960.webp"
+            },
+            {
+              "w": 1521,
+              "url": "/media/photo/spot-colouring-project/c4ad98ce-8404-4031-a824-f4e6d7daff01-1521.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/c4ad98ce-8404-4031-a824-f4e6d7daff01-1521.webp"
+        },
+        {
+          "id": "c5b107e1-8a71-4bda-a008-eec9df829958",
+          "file": "C5B107E1-8A71-4BDA-A008-EEC9DF829958.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 5135,
+          "h": 3456,
+          "blur": "data:image/webp;base64,UklGRlQCAABXRUJQVlA4WAoAAAAgAAAAFwAADwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggZgAAANADAJ0BKhgAEAA/EXKwUCwmpKKwCAGAIglpAMoAG55u8Xa3+IRvAAD+v3yJzpjIFCPBDJlKcookgacOPGhfDN/2r6FGfVSCTTfHRAX/5LovxNVnJIYUN/mCPwEZdZSabVDIKxrUAA==",
+          "color": "#302c30",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/c5b107e1-8a71-4bda-a008-eec9df829958-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/c5b107e1-8a71-4bda-a008-eec9df829958-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/c5b107e1-8a71-4bda-a008-eec9df829958-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/c5b107e1-8a71-4bda-a008-eec9df829958-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/c5b107e1-8a71-4bda-a008-eec9df829958-2400.webp"
+        },
+        {
+          "id": "e7326c1f-bb90-4f9f-9bff-bce676424298",
+          "file": "E7326C1F-BB90-4F9F-9BFF-BCE676424298.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 2633,
+          "h": 3353,
+          "blur": "data:image/webp;base64,UklGRpgCAABXRUJQVlA4WAoAAAAgAAAAFwAAHgAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggqgAAAHAFAJ0BKhgAHwA/EYC3VawnpSMoCAGAIglpAADuAv2V/VUb6/vIJ2nIPL9/uk40lE5GPQAA/uFP//tFF8qPEadB3UEE1p03npQo6PI7VOnudt1hKVlCa4vlk4tQUoRU5OQukLKFrPWgT5KidI6017OSVhyAQF7lYKTYRM9jvVTnrG/PxvcAJPOKyVxs4y6g4YuOkw9eg53QSSvT3J9laeOs+jhCq74oAAAA",
+          "color": "#565555",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/e7326c1f-bb90-4f9f-9bff-bce676424298-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/e7326c1f-bb90-4f9f-9bff-bce676424298-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/e7326c1f-bb90-4f9f-9bff-bce676424298-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/e7326c1f-bb90-4f9f-9bff-bce676424298-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/e7326c1f-bb90-4f9f-9bff-bce676424298-2400.webp"
+        },
+        {
+          "id": "f8818bed-8c72-457a-91cc-f14f2100062f",
+          "file": "F8818BED-8C72-457A-91CC-F14F2100062F.jpeg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 2468,
+          "h": 1646,
+          "blur": "data:image/webp;base64,UklGRnYCAABXRUJQVlA4WAoAAAAgAAAAFwAADwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggiAAAALADAJ0BKhgAEAA/EXKwUCwmpKKwCAGAIglkAJ0AEIU3d1XMQjDYAP7piSEWpAXuHlMF/CWNHM0NcWV2LGZrR8LxujaKvur4W79j4D4Qx4oxdvYQol9ZXvPtKUbp0teIRhcVwBSNdOjG3r3lwwj+2WE9yqQX5WhwRClAgicprwHcViJLdT+gAAA=",
+          "color": "#485462",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/f8818bed-8c72-457a-91cc-f14f2100062f-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/f8818bed-8c72-457a-91cc-f14f2100062f-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/f8818bed-8c72-457a-91cc-f14f2100062f-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/f8818bed-8c72-457a-91cc-f14f2100062f-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/f8818bed-8c72-457a-91cc-f14f2100062f-2400.webp"
+        },
+        {
+          "id": "img-3975",
+          "file": "IMG_3975.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3287,
+          "h": 4841,
+          "blur": "data:image/webp;base64,UklGRnYCAABXRUJQVlA4WAoAAAAgAAAAFwAAIgAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggiAAAAHAEAJ0BKhgAIwA/AWywUCsmJSK1WAwBYCAJZwAAhQ3he7TnXviM1lPWIatgAOQn0LX6LrqXw4RNLt0A9xDyfK+jrNobnxDWzw3g/zP82iXI0vhUX4YsgGY+w6mkRoGU1VpXbdissA3No9RSEbGkrDZ/ub9kXuIBaBqoJjRD3YGBKZV6Sa6cAAA=",
+          "color": "#5e5a5c",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/img-3975-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/img-3975-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/img-3975-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/img-3975-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/img-3975-2400.webp"
+        },
+        {
+          "id": "img-4031",
+          "file": "IMG_4031.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3335,
+          "h": 5002,
+          "blur": "data:image/webp;base64,UklGRp4CAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggsAAAAPAFAJ0BKhgAJAA/EXSzUKwmpKKqrAGAIgllANFEDQ1run0ffj62F77wfsdIXQuFiOYP+Tpncm7wAP7r/v8bwLy9GiNGk6mkBE+u6XcoD+NLk7YwHE9BuijTVuVgvHaZHs+3iW1Fmh3zFujvxAdlXmpdP+OdSuyNfH39pfajwu/EBvzCnP5oWXU0uqfaXEnNFgfqohCx1hRNzU+/7oEEr7NyvM34MoRD6Y1JnaR5YAAA",
+          "color": "#4a4c56",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/img-4031-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/img-4031-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/img-4031-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/img-4031-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/img-4031-2400.webp"
+        },
+        {
+          "id": "img-4392",
+          "file": "IMG_4392.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3129,
+          "h": 4694,
+          "blur": "data:image/webp;base64,UklGRugCAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDgg+gAAABAHAJ0BKhgAJAA/EXy2VSwnJKMlazGAIglnAAgdWK0xUzdzY7LJHYhgDjEiAk4AbPMgfb7KtzQja4IBXn2/QB3AAP7p6yFNraXi1f3nAo6Q+4ZJJG+kuxCKlT758hXkTiX4XP3202FtqvZ2ZYnsHvrkxtOx/sOpk3qhr05AElLGPO39fI8cEnEjEw0j9k2qTbVKVCkSPfVLE0l4aRUdYBKTxVl61x8JUglUzHxY7TM3YUhz42Cqhyj1sSMEIvRBGE3VI1mxtcEEvjlDTeIsn9wXgspzoFmN0jKAOkctlz/ZlNzi/69BGk6dR4c9UH7MS22Rxf6xsBtQgAA=",
+          "color": "#454340",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/img-4392-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/img-4392-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/img-4392-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/img-4392-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/img-4392-2400.webp"
+        },
+        {
+          "id": "img-9041",
+          "file": "IMG_9041.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3135,
+          "h": 4702,
+          "blur": "data:image/webp;base64,UklGRlYCAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggaAAAADAFAJ0BKhgAJAA/EXCxUqwlpCKwFVqpgCIJaQAAfpNNfhQsDtWStz4B+Mnf7sgm1haQAP7pm0wHN/4VDGX6cFc1G1gSsiSlN0zL8MQIx2EznKbossXdYM9xUbpx72ro3Jlw1/JaAAAA",
+          "color": "#1d1d1c",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/img-9041-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/img-9041-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/img-9041-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/img-9041-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/img-9041-2400.webp"
+        },
+        {
+          "id": "img-9819",
+          "file": "IMG_9819.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3342,
+          "h": 5013,
+          "blur": "data:image/webp;base64,UklGRrYCAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggyAAAANAEAJ0BKhgAJAA/EXixUSwnpKKqrAGAIglnAAAaLVKCPqARxSzXLzdB1+89wDVoAP6ahRnrC94yrKuW5gxcx5hczeyMXCxdxb7L7T95K8pKJ3iClj+uJMZX+BnEqNPxtRNMzbHtM7Lp5CYarskstOyKQqtwhBuy/OHS1LwgUsCcEb7ZaHTzOEBdwj+JbUvpBmv1qiIB5Hb5+wUEgFDUnrmJGUB0AjbpB6FB6/4YfAj4AfKCI9ENbTmXgH+Q77i1h1qXUPAAAAAA",
+          "color": "#636361",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/img-9819-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/img-9819-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/img-9819-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/img-9819-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/img-9819-2400.webp"
+        },
+        {
+          "id": "img-9839",
+          "file": "IMG_9839.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3315,
+          "h": 4973,
+          "blur": "data:image/webp;base64,UklGRpICAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggpAAAANAEAJ0BKhgAJAA/EXa0USwnJSKwFVqpgCIJaQAAHDlEiXJVnns0jQc6GTjK6U1gAP7w36XgOYouWVBT13tuZN9dW6v8yB0GuAlo9kUc+d+tn1aHUBDyosaZNZJhitRx+EgnkjYx113JHXkjGkBMGd+opssF8DJ0lgXItXNeFni/c1hw282LA5nCSaO5IEDsYb/C8CKSmJ5OASt6d1gq0UQAAAAA",
+          "color": "#343333",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/img-9839-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/img-9839-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/img-9839-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/img-9839-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/img-9839-2400.webp"
+        },
+        {
+          "id": "img-9881",
+          "file": "IMG_9881.PNG",
+          "alt": "Photograph from Spot Colouring",
+          "w": 2532,
+          "h": 1170,
+          "blur": "data:image/webp;base64,UklGRkYCAABXRUJQVlA4WAoAAAAgAAAAFwAACgAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggWAAAABAEAJ0BKhgACwA/EXKwUCwmpKKwCAGAIglpAABUhn8idhsCk2ZIQdaAAP7jckrvuDhb6n/l/IesGclhw3Cg4HJPu2F3fe5r0D5YYot+u6eTTmBuJIBOAAA=",
+          "color": "#4d4d4d",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/img-9881-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/img-9881-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/img-9881-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/img-9881-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/img-9881-2400.webp"
+        },
+        {
+          "id": "img-9941",
+          "file": "IMG_9941.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3162,
+          "h": 4743,
+          "blur": "data:image/webp;base64,UklGRuACAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDgg8gAAAJAGAJ0BKhgAJAA/EXSuUCwmpCKwFV1RgCIJYgDPoCT9/uab62G29bWfNKEOk333C08xM0u7HDJLXGMUEgAA/p8W/20c/4y6kzyskKJZT0EoogE0J04a93Po4rU6hgUUcboGvCDq4azIL+kpID4Hi198x9GGGkGEPCtrnZsDFKRJfPjNp78szOOV2VdLdEXUpbqi1FGf3Ri0+t9pmbrSJyM5jKM648LPUZCEAoKiB3BF+C9W37Y4onhuFmHY1tzT/a7YjGQaKv+AImeRUh/WL0dLnmK2qYsdJ71rTAnOoPulcUg1jBNg1G7HyGJhVF9aBAAA",
+          "color": "#4b3d3e",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/img-9941-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/img-9941-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/img-9941-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/img-9941-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/img-9941-2400.webp"
+        },
+        {
+          "id": "img-9959",
+          "file": "IMG_9959.jpg",
+          "alt": "Photograph from Spot Colouring",
+          "w": 3353,
+          "h": 5030,
+          "blur": "data:image/webp;base64,UklGRrACAABXRUJQVlA4WAoAAAAgAAAAFwAAIwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggwgAAADAFAJ0BKhgAJAA/BWyqUCumI6K1WAwBcCCJaQAAN4XfnPgaYgi3tFKIYQASA1mxeqxQAPvbc0pYq8AAtfVofvqZ4nHQfZcSbEBdTWGi0j8jQkzi0iIGVtybbmJkI4BWCDCmpRYQfQ3LK0vlMppUQEbGyLn7FjexlYlLk7+xlRJBPte88p3aOCOtGY/ivkncasZYmh9LuirPmNyZ+05yvbELJ+Z9QhJYS5QocNS3hiZ6/8Or+SGqFFv/LzxZD1quAAAA",
+          "color": "#676666",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/img-9959-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/img-9959-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/img-9959-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/img-9959-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/img-9959-2400.webp"
         }
       ],
       "description": "This album focuses on a selection of photographs where by colouring certain spots, I aim to tell the story through my eyes without leaving much room for interpretation. \n\nSpot colouring has been an initiative that I have taken on for the past few years, and it was born by experimenting with the editing process. In my attempts of highlighting and directing the focus towards the point of interest that I had, spot colouring was born. \n\nEnjoy the album, and I do hope that each of the photographs will bring you as much joy and inspiration as they have brought me!! "
