@@ -305,7 +305,7 @@ test.describe("Portfolio — real content", () => {
 test.describe("Contact", () => {
   test("email and the enquiry form are there", async ({ page }) => {
     await page.goto("/contact");
-    await expect(page.getByRole("link", { name: "tudosie3@gmail.com" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "gabbra.net@outlook.com" })).toBeVisible();
     await page.getByLabel("Your name").fill("Test Visitor");
     await page.getByLabel("Your email").fill("visitor@example.com");
     await page.getByLabel("Tell me about it").fill("A test enquiry.");

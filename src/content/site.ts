@@ -3,7 +3,7 @@ export const SITE = {
   name: "GabbRa",
   tagline: "Reality, Reframed.",
   /** where enquiries go */
-  email: "tudosie3@gmail.com",
+  email: "gabbra.net@outlook.com",
   /** Instagram handle without the @; null hides the link until it is supplied */
   instagram: null as string | null,
   /** Google Analytics 4 measurement ID (G-XXXXXXXXXX); null keeps analytics and the cookie notice off */
