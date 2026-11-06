@@ -5,36 +5,8 @@
       "title": "Spot Colouring",
       "subject": "Photography",
       "order": 0,
-      "cover": "1",
+      "cover": "2",
       "photos": [
-        {
-          "id": "1",
-          "file": "1.jpg",
-          "alt": "A great tit looks out of the round entrance of a grey wooden birdhouse; only the bird is in colour, the rest of the scene in black and white.",
-          "w": 2979,
-          "h": 1976,
-          "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwBACdASoYABAAPxFwsFAsJiSisAgBgCIJaQDMHCHrUiMSbonQctSZCugA/uMULixdD0QJmGPRtSdxig9+Ta6djtLC1NPLSxhrEXWYc6iNHeEcxFBWv3imVB7w3IAA",
-          "color": "#888888",
-          "srcset": [
-            {
-              "w": 480,
-              "url": "/media/photo/spot-colouring-project/1-480.webp"
-            },
-            {
-              "w": 960,
-              "url": "/media/photo/spot-colouring-project/1-960.webp"
-            },
-            {
-              "w": 1600,
-              "url": "/media/photo/spot-colouring-project/1-1600.webp"
-            },
-            {
-              "w": 2400,
-              "url": "/media/photo/spot-colouring-project/1-2400.webp"
-            }
-          ],
-          "src": "/media/photo/spot-colouring-project/1-2400.webp"
-        },
         {
           "id": "2",
           "file": "2.jpg",
@@ -62,6 +34,34 @@
             }
           ],
           "src": "/media/photo/spot-colouring-project/2-2400.webp"
+        },
+        {
+          "id": "1",
+          "file": "1.jpg",
+          "alt": "A great tit looks out of the round entrance of a grey wooden birdhouse; only the bird is in colour, the rest of the scene in black and white.",
+          "w": 2979,
+          "h": 1976,
+          "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwBACdASoYABAAPxFwsFAsJiSisAgBgCIJaQDMHCHrUiMSbonQctSZCugA/uMULixdD0QJmGPRtSdxig9+Ta6djtLC1NPLSxhrEXWYc6iNHeEcxFBWv3imVB7w3IAA",
+          "color": "#888888",
+          "srcset": [
+            {
+              "w": 480,
+              "url": "/media/photo/spot-colouring-project/1-480.webp"
+            },
+            {
+              "w": 960,
+              "url": "/media/photo/spot-colouring-project/1-960.webp"
+            },
+            {
+              "w": 1600,
+              "url": "/media/photo/spot-colouring-project/1-1600.webp"
+            },
+            {
+              "w": 2400,
+              "url": "/media/photo/spot-colouring-project/1-2400.webp"
+            }
+          ],
+          "src": "/media/photo/spot-colouring-project/1-2400.webp"
         },
         {
           "id": "3",
@@ -119,7 +119,8 @@
           ],
           "src": "/media/photo/spot-colouring-project/4-2400.webp"
         }
-      ]
+      ],
+      "description": "This album focuses on a selection of photographs where by colouring certain spots, I aim to tell the story through my eyes without leaving much room for interpretation. \n\nSpot colouring has been an initiative that I have taken on for the past few years, and it was born by experimenting with the editing process. In my attempts of highlighting and directing the focus towards the point of interest that I had, spot colouring was born. \n\nEnjoy the album, and I do hope that each of the photographs will bring you as much joy and inspiration as they have brought me!! "
     }
   ]
 }
