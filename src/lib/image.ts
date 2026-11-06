@@ -45,7 +45,12 @@ export async function processImage(file: File, widths = PHOTO_WIDTHS): Promise<P
   try {
     bmp = await createImageBitmap(file, { imageOrientation: "from-image" });
   } catch {
-    throw new Error(`${file.name}: this file type cannot be read here. Use JPG, PNG or WebP.`);
+    try {
+      // some browsers do not accept the options; the picture is still right way up in most of them
+      bmp = await createImageBitmap(file);
+    } catch {
+      throw new Error(`${file.name}: this file cannot be read here. Use JPG, PNG or WebP (iPhone HEIC photos: share or export them as JPG first).`);
+    }
   }
   const max = widths[widths.length - 1];
   let sizes = widths.filter((x) => x <= bmp.width);

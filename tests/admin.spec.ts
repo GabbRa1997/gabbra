@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { readFileSync } from "node:fs";
 import sharp from "sharp";
 
 /** A tiny fake GitHub, so the admin can be tested end to end without touching the real repository. */
@@ -159,6 +160,46 @@ test.describe("Admin", () => {
     const json = JSON.parse(Object.values(gh.blobs).find((b) => b.startsWith("{"))!);
     expect(json.projects[0]).toMatchObject({ slug: "lisbon-nights", title: "Lisbon Nights", cover: "img-0001" });
     expect(json.projects[0].photos[0].w).toBe(1800);
+  });
+
+  test("Photography: several photographs are added to an existing album and published", async ({ page }) => {
+    await signedIn(page);
+    const photosJson = readFileSync("src/content/generated/photos.json", "utf8");
+    const gh = await fakeGithub(page, { "src/content/generated/photos.json": photosJson });
+    await page.goto("/admin");
+    await page.getByRole("button", { name: "Photography", exact: true }).click();
+    await page.getByRole("button", { name: "Open", exact: true }).first().click();
+    const before = await page.getByRole("button", { name: "Make cover" }).count();
+    const big = await sharp({ create: { width: 5184, height: 3456, channels: 3, background: "#446688" } }).jpeg().toBuffer();
+    const png = await sharp({ create: { width: 1200, height: 1800, channels: 3, background: "#884444" } }).png().toBuffer();
+    await page.locator('input[type="file"]').first().setInputFiles([
+      { name: "IMG_0001.JPG", mimeType: "image/jpeg", buffer: big },
+      { name: "Edit 2.png", mimeType: "image/png", buffer: png },
+      { name: "IMG_0003.jpeg", mimeType: "image/jpeg", buffer: big },
+    ]);
+    await expect(page.getByText(/Added 3 photographs/)).toBeVisible({ timeout: 60_000 });
+    await expect(page.getByRole("button", { name: "Make cover" })).toHaveCount(before + 3);
+    await page.getByRole("button", { name: "Publish changes" }).click();
+    await expect(page.getByRole("status").last()).toContainText(/Saved/, { timeout: 60_000 });
+    const paths = gh.trees[0].map((t) => t.path);
+    expect(paths.filter((x) => x.includes("/img-0001-")).length).toBeGreaterThanOrEqual(3);
+    expect(paths).toContain("src/content/generated/photos.json");
+  });
+
+  test("Photography: a file that cannot be read is named, and the others are still added", async ({ page }) => {
+    await signedIn(page);
+    const gh = await fakeGithub(page, { "src/content/generated/photos.json": readFileSync("src/content/generated/photos.json", "utf8") });
+    await page.goto("/admin");
+    await page.getByRole("button", { name: "Photography", exact: true }).click();
+    await page.getByRole("button", { name: "Open", exact: true }).first().click();
+    const jpg = await sharp({ create: { width: 1000, height: 700, channels: 3, background: "#337744" } }).jpeg().toBuffer();
+    await page.locator('input[type="file"]').first().setInputFiles([
+      { name: "holiday.heic", mimeType: "image/heic", buffer: Buffer.from("not really an image") },
+      { name: "good.jpg", mimeType: "image/jpeg", buffer: jpg },
+    ]);
+    await expect(page.getByText(/Added 1 photograph/)).toBeVisible({ timeout: 30_000 });
+    await expect(page.getByText(/holiday\.heic/)).toBeVisible();
+    expect(gh.commits).toHaveLength(0);
   });
 
   test("Google SEO: titles and descriptions are previewed, checked and saved; missing text is flagged", async ({ page }) => {

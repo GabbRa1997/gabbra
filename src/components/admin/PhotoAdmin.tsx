@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, type DragEvent } from "react";
 import { blobToBase64, commit, readText, type FileChange } from "@/lib/github";
 import { processImage } from "@/lib/image";
 import type { Photo, PhotoProject } from "@/lib/media";
@@ -23,9 +23,9 @@ export default function PhotoAdmin() {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState("");
   const [newTitle, setNewTitle] = useState("");
+  const [note, setNote] = useState<{ added: number; failed: string[] } | null>(null);
   const pub = usePublisher();
-  const fileInput = useRef<HTMLInputElement>(null);
-  const newFiles = useRef<HTMLInputElement>(null);
+  const [newFiles, setNewFiles] = useState<File[]>([]);
 
   const load = async () => {
     try {
@@ -45,16 +45,17 @@ export default function PhotoAdmin() {
   const update = (slug: string, fn: (p: PhotoProject) => PhotoProject) =>
     setProjects((list) => list?.map((p) => (p.slug === slug ? fn(p) : p)) ?? list);
 
-  /** prepare files in the browser and add them to a project */
+  /** prepare files in the browser and add them to a project; one bad file never stops the others */
   const addPhotos = async (slug: string, files: File[], title?: string) => {
-    setBusy(`Preparing ${files.length} photo${files.length > 1 ? "s" : ""}…`);
-    try {
-      const made: Photo[] = [];
-      const newBlobs: Blobs = {};
-      const newPrev: Record<string, string> = {};
-      const taken = new Set(projects?.find((p) => p.slug === slug)?.photos.map((p) => p.id) ?? []);
-      for (const [n, file] of files.entries()) {
-        setBusy(`Preparing photo ${n + 1} of ${files.length}…`);
+    setNote(null);
+    const made: Photo[] = [];
+    const failed: string[] = [];
+    const newBlobs: Blobs = {};
+    const newPrev: Record<string, string> = {};
+    const taken = new Set(projects?.find((p) => p.slug === slug)?.photos.map((p) => p.id) ?? []);
+    for (const [n, file] of files.entries()) {
+      setBusy(`Preparing photo ${n + 1} of ${files.length}…`);
+      try {
         const out = await processImage(file);
         let id = slugify(file.name.replace(/\.[^.]+$/, "")) || `photo-${Date.now()}`;
         while (taken.has(id)) id += "-2";
@@ -74,7 +75,11 @@ export default function PhotoAdmin() {
           srcset,
           src: srcset[srcset.length - 1].url,
         });
+      } catch (e) {
+        failed.push(e instanceof Error ? e.message : `${file.name}: could not be prepared.`);
       }
+    }
+    if (made.length) {
       setBlobs((b) => ({ ...b, ...newBlobs }));
       setPreviews((p) => ({ ...p, ...newPrev }));
       setProjects((list) => {
@@ -82,10 +87,16 @@ export default function PhotoAdmin() {
         if (l.some((p) => p.slug === slug)) return l.map((p) => (p.slug === slug ? { ...p, photos: [...p.photos, ...made] } : p));
         return [...l, { slug, title: title ?? slug, subject: "Photography", order: l.length, cover: made[0].id, photos: made }];
       });
-    } catch (e) {
-      alert(e instanceof Error ? e.message : "Could not add those photos.");
     }
+    setNote({ added: made.length, failed });
     setBusy("");
+    return made.length;
+  };
+
+  const isImage = (f: File) => f.type.startsWith("image/") || /\.(jpe?g|png|webp|heic|heif|tiff?)$/i.test(f.name);
+  const onDrop = (e: DragEvent, add: (files: File[]) => void) => {
+    e.preventDefault();
+    add([...e.dataTransfer.files].filter(isImage));
   };
 
   const dropFiles = (photo: Photo) => {
@@ -162,19 +173,25 @@ export default function PhotoAdmin() {
             <Label text="Project title">
               <Input value={newTitle} onChange={(e) => setNewTitle(e.target.value)} placeholder="e.g. Lisbon Nights" />
             </Label>
-            <input ref={newFiles} type="file" accept="image/jpeg,image/png,image/webp" multiple className="text-sm text-bone/60" />
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={(e) => setNewFiles([...(e.target.files ?? [])])}
+              className="text-sm text-bone/60"
+            />
             <div>
               <Btn
                 tone="main"
                 disabled={!newTitle.trim() || !!busy}
                 onClick={async () => {
-                  const files = [...(newFiles.current?.files ?? [])];
+                  const files = newFiles;
                   const slug = slugify(newTitle);
                   if (!files.length) return alert("Choose at least one photograph.");
                   if (!slug || projects.some((p) => p.slug === slug)) return alert("That title is empty or already used.");
-                  await addPhotos(slug, files, newTitle.trim());
+                  if ((await addPhotos(slug, files, newTitle.trim())) === 0) return;
                   setNewTitle("");
-                  if (newFiles.current) newFiles.current.value = "";
+                  setNewFiles([]);
                   setOpen(slug);
                 }}
               >
@@ -206,20 +223,41 @@ export default function PhotoAdmin() {
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <input ref={fileInput} type="file" accept="image/jpeg,image/png,image/webp" multiple className="text-sm text-bone/60" />
-            <Btn
+          <label
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={(e) => onDrop(e, (f) => f.length && void addPhotos(current.slug, f))}
+            className="mt-8 block cursor-pointer border border-dashed border-line px-6 py-10 text-center text-bone/70 transition-colors hover:border-[var(--tint)] hover:text-[var(--tint)]"
+          >
+            <span className="t-label text-[0.7rem]">{busy ? "Preparing…" : "Add photographs"}</span>
+            <span className="mt-2 block text-sm text-bone/45">Click to choose several at once, or drop them here. They are added straight away; then press Publish.</span>
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              hidden
               disabled={!!busy}
-              onClick={async () => {
-                const files = [...(fileInput.current?.files ?? [])];
-                if (!files.length) return alert("Choose photographs first.");
-                await addPhotos(current.slug, files);
-                if (fileInput.current) fileInput.current.value = "";
+              onChange={(e) => {
+                const input = e.currentTarget;
+                const files = [...(input.files ?? [])];
+                input.value = "";
+                if (files.length) void addPhotos(current.slug, files);
               }}
-            >
-              Add these photographs
-            </Btn>
-          </div>
+            />
+          </label>
+          {note && (
+            <div aria-live="polite" className="mt-4 space-y-1 border border-line px-4 py-3 text-sm">
+              {note.added > 0 && (
+                <p className="text-bone/80">
+                  Added {note.added} photograph{note.added > 1 ? "s" : ""}. Press “Publish changes” below to put {note.added > 1 ? "them" : "it"} on the site.
+                </p>
+              )}
+              {note.failed.map((f) => (
+                <p key={f} className="text-red-300">
+                  Not added: {f}
+                </p>
+              ))}
+            </div>
+          )}
 
           <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {current.photos.map((ph, i) => (
