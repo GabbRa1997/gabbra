@@ -31,9 +31,9 @@ export const PHOTO_SECTIONS: PhotoSection[] = [
   {
     slug: "prints",
     n: "02",
-    title: "Prints",
+    title: "Selected Prints",
     part: "sensor",
-    blurb: "Selected photographs as art editions.",
+    blurb: "The artist's selected prints, ready to order.",
     lead: "Where the image leaves the sensor and becomes an object.",
   },
   {

@@ -202,6 +202,25 @@ test.describe("Admin", () => {
     expect(gh.commits).toHaveLength(0);
   });
 
+  test("Prints: sizes and prices are saved, and only a Stripe link is accepted", async ({ page }) => {
+    await signedIn(page);
+    const gh = await fakeGithub(page, { "src/content/admin/prints.json": readFileSync("src/content/admin/prints.json", "utf8") });
+    await page.goto("/admin");
+    await page.getByRole("button", { name: "Prints", exact: true }).click();
+    await expect(page.getByRole("heading", { name: "Print sizes and prices" })).toBeVisible();
+    await page.getByLabel("Price").first().fill("€90");
+    await page.getByLabel(/^Stripe payment link/).first().fill("https://example.com/pay");
+    await page.getByRole("button", { name: "Publish changes" }).click();
+    await expect(page.locator("p[role=status], p").filter({ hasText: /must be a Stripe link/ }).first()).toBeVisible();
+    expect(gh.commits).toHaveLength(0);
+    await page.getByLabel(/^Stripe payment link/).first().fill("https://buy.stripe.com/test_abc123");
+    await page.getByRole("button", { name: "Publish changes" }).click();
+    await expect(page.getByRole("status")).toContainText(/Saved/);
+    expect(gh.commits[0]).toBe("Prints: update sizes and prices");
+    const json = JSON.parse(Object.values(gh.blobs).find((b) => b.startsWith("{"))!);
+    expect(json.sizes[0]).toMatchObject({ price: "€90", link: "https://buy.stripe.com/test_abc123" });
+  });
+
   test("Google SEO: titles and descriptions are previewed, checked and saved; missing text is flagged", async ({ page }) => {
     await signedIn(page);
     const gh = await fakeGithub(page, {

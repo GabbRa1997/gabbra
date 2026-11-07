@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
+import TLink from "@/components/shell/TLink";
 import type { Photo } from "@/lib/media";
 
 /** Full-screen viewing: arrows, swipe, Esc, focus kept inside, focus returned on close. */
@@ -10,12 +11,15 @@ export default function Lightbox({
   onClose,
   onIndex,
   title,
+  slug,
 }: {
   photos: Photo[];
   index: number;
   onClose: () => void;
   onIndex: (i: number) => void;
   title: string;
+  /** the project, so a print can be requested for the photograph on show */
+  slug?: string;
 }) {
   const closeBtn = useRef<HTMLButtonElement>(null);
   const root = useRef<HTMLDivElement>(null);
@@ -110,7 +114,18 @@ export default function Lightbox({
           </>
         )}
       </div>
-      <p className="px-5 py-4 text-center text-sm text-bone/50 md:px-8">{photo.alt}</p>
+      <div className="px-5 py-4 text-center md:px-8">
+        <p className="text-sm text-bone/50">{photo.alt}</p>
+        {slug && (
+          <TLink
+            href={`/photo/print?photo=${encodeURIComponent(`${slug}/${photo.id}`)}`}
+            variant="fade"
+            className="t-label mt-3 inline-block text-[0.66rem] text-bone/60 underline-offset-4 hover:text-[var(--tint)] hover:underline"
+          >
+            Request print →
+          </TLink>
+        )}
+      </div>
     </div>
   );
 }

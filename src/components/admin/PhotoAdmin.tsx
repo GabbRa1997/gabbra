@@ -270,6 +270,16 @@ export default function PhotoAdmin() {
                 <Label text="Describe this photo" hint="for accessibility and Google">
                   <Textarea rows={2} value={ph.alt} onChange={(e) => update(current.slug, (p) => ({ ...p, photos: p.photos.map((x) => (x.id === ph.id ? { ...x, alt: e.target.value } : x)) }))} />
                 </Label>
+                <label className="mt-3 flex items-center gap-3 text-sm text-bone/70">
+                  <input
+                    type="checkbox"
+                    checked={!!ph.print}
+                    onChange={(e) =>
+                      update(current.slug, (p) => ({ ...p, photos: p.photos.map((x) => (x.id === ph.id ? { ...x, print: e.target.checked ? (x.print ?? {}) : undefined } : x)) }))
+                    }
+                  />
+                  Show in Selected Prints
+                </label>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <RowTools
                     onUp={() => update(current.slug, (p) => ({ ...p, photos: move(p.photos, i, -1) }))}

@@ -1,0 +1,10 @@
+{
+  "paper": "",
+  "note": "",
+  "sizes": [
+    { "id": "small", "label": "Small", "long": 20, "price": "", "link": "" },
+    { "id": "medium", "label": "Medium", "long": 30, "price": "", "link": "" },
+    { "id": "large", "label": "Large", "long": 40, "price": "", "link": "" },
+    { "id": "extra-large", "label": "Extra large", "long": 50, "price": "", "link": "" }
+  ]
+}

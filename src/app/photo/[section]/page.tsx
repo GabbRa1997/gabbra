@@ -4,6 +4,7 @@ import Photograph from "@/components/media/Photograph";
 import SelectedWorks from "@/components/photo/SelectedWorks";
 import TLink from "@/components/shell/TLink";
 import { PHOTO_PROJECTS, PRINTS } from "@/lib/media";
+import { PRINTS_CFG } from "@/lib/prints";
 import { PageFrame, Placeholder } from "@/components/shell/PageFrame";
 import {
   PHOTO_SECTIONS,
@@ -48,33 +49,35 @@ export default async function PhotoSectionPage({ params }: { params: Promise<Par
 
 function Body({ slug }: { slug: PhotoSectionSlug }) {
   if (slug === "prints" && PRINTS.length > 0) {
+    const sizes = PRINTS_CFG.sizes;
+    const priced = sizes.map((x) => x.price).filter(Boolean);
     return (
       <div className="grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
         {PRINTS.map(({ photo, project }) => (
           <article key={`${project.slug}/${photo.id}`}>
-            <div className="overflow-hidden" style={{ aspectRatio: `${photo.w} / ${photo.h}`, maxHeight: "70svh" }}>
-              <Photograph photo={photo} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" fit="contain" />
-            </div>
-            <h2 className="t-wide mt-4 text-[1.3rem]">{project.title}</h2>
-            <dl className="mt-3 divide-y divide-line border-y border-line text-sm">
-              {[
-                ["Sizes", photo.print?.sizes],
-                ["Paper", photo.print?.paper],
-                ["Edition", photo.print?.edition],
-                ["Price", photo.print?.price],
-              ].map(([k, v]) => (
-                <div key={k} className="flex justify-between gap-6 py-2.5">
-                  <dt className="t-label text-steel">{k}</dt>
-                  <dd className={v ? "text-bone/80" : "text-bone/35"}>{v || "On request"}</dd>
-                </div>
-              ))}
-            </dl>
             <TLink
-              href={`/contact?type=print&ref=${encodeURIComponent(`${project.title} (${photo.file})`)}`}
+              href={`/photo/print?photo=${encodeURIComponent(`${project.slug}/${photo.id}`)}`}
               variant="fade"
-              className="t-label mt-4 inline-flex border border-[var(--tint)] px-4 py-3 text-[var(--tint)] transition-colors hover:bg-[var(--tint)] hover:text-ink"
+              className="group block"
             >
-              Enquire about this print →
+              <div className="overflow-hidden" style={{ aspectRatio: `${photo.w} / ${photo.h}`, maxHeight: "70svh" }}>
+                <Photograph
+                  photo={photo}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  fit="contain"
+                  className="transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02]"
+                />
+              </div>
+              <h2 className="t-wide mt-4 text-[1.3rem] transition-colors group-hover:text-[var(--tint)]">{project.title}</h2>
+              <p className="t-label mt-2 flex justify-between gap-4 text-[0.62rem] text-steel">
+                <span>
+                  {sizes[0].long}–{sizes[sizes.length - 1].long} cm
+                </span>
+                {priced.length > 0 && <span>From {priced[0]}</span>}
+              </p>
+              <span className="t-label mt-4 inline-flex border border-[var(--tint)] px-4 py-3 text-[var(--tint)] transition-colors group-hover:bg-[var(--tint)] group-hover:text-ink">
+                Choose a size →
+              </span>
             </TLink>
           </article>
         ))}

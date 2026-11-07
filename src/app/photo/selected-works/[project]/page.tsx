@@ -49,7 +49,7 @@ export default async function PhotoProjectPage({ params }: { params: Promise<Par
       )}
 
       <div className={paragraphs.length > 0 ? "mt-16 border-t border-line pt-12 md:mt-24 md:pt-16" : ""}>
-        <ProjectGallery title={p.title} photos={p.photos} />
+        <ProjectGallery title={p.title} slug={p.slug} photos={p.photos} />
       </div>
 
       <nav aria-label="Project navigation" className="mt-24 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">

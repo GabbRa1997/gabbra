@@ -6,7 +6,7 @@ import type { Photo } from "@/lib/media";
 import Lightbox from "./Lightbox";
 
 /** An immersive project: the first photograph runs wide, the rest fall into columns; any one opens full-screen. */
-export default function ProjectGallery({ title, photos }: { title: string; photos: Photo[] }) {
+export default function ProjectGallery({ title, slug, photos }: { title: string; slug: string; photos: Photo[] }) {
   const [open, setOpen] = useState<number | null>(null);
   const close = useCallback(() => setOpen(null), []);
   // only a landscape photograph runs wide; a tall one would fill the whole screen
@@ -46,7 +46,7 @@ export default function ProjectGallery({ title, photos }: { title: string; photo
           </div>
         )}
       </div>
-      {open !== null && <Lightbox photos={photos} index={open} onClose={close} onIndex={setOpen} title={title} />}
+      {open !== null && <Lightbox photos={photos} index={open} onClose={close} onIndex={setOpen} title={title} slug={slug} />}
     </>
   );
 }

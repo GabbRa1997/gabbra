@@ -60,9 +60,9 @@ test.describe("Photography — 550D", () => {
 
     // the sensor opens Prints
     await page.getByRole("button", { name: /CMOS sensor/ }).click();
-    await page.getByRole("link", { name: /Enter Prints/ }).click();
+    await page.getByRole("link", { name: /Enter Selected Prints/ }).click();
     await expect(page).toHaveURL(/\/photo\/prints$/);
-    await expect(page.getByRole("heading", { name: "Prints" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Selected Prints" })).toBeVisible();
   });
 
   test("explosion slider is keyboard operable", async ({ page }) => {
@@ -286,12 +286,30 @@ test.describe("Portfolio — real content", () => {
     await expect(viewer).toHaveCount(0);
   });
 
-  test("a print opens a pre-filled enquiry", async ({ page }) => {
-    test.skip(!hasPrints, "no prints offered yet");
-    await page.goto("/photo/prints");
-    await page.getByRole("link", { name: /Enquire about this print/ }).first().click();
-    await expect(page).toHaveURL(/\/contact\?type=print/);
-    await expect(page.getByRole("textbox", { name: /tell me about it/i })).toHaveValue(/I would like to enquire about/);
+  test("a print page shows the photograph to scale and the size changes the preview", async ({ page }) => {
+    test.skip(!hasPhotos, "no photographs supplied yet");
+    await page.addInitScript(() => localStorage.setItem("gabbra:consent", "denied"));
+    await page.goto(`/photo/print?photo=${projects[0].slug}/${(projects[0].photos[0] as { id: string }).id}`);
+    await expect(page.getByRole("heading", { name: "Request a print" })).toBeVisible();
+    const sizes = page.getByRole("radio");
+    await expect(sizes).toHaveCount(4);
+    const label = page.locator("figure p").first();
+    const small = await label.textContent();
+    await sizes.nth(3).click();
+    await expect(label).not.toHaveText(small ?? "");
+    // no payment link yet, so the buy button waits and nothing sends the visitor anywhere
+    await expect(page.getByText("Checkout opens soon")).toBeVisible();
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+  });
+
+  test("the full-screen viewer offers Request print for the photograph on show", async ({ page }) => {
+    test.skip(!hasPhotos, "no photographs supplied yet");
+    await page.addInitScript(() => localStorage.setItem("gabbra:consent", "denied"));
+    await page.goto(`/photo/selected-works/${projects[0].slug}`);
+    await page.getByRole("button", { name: /Open photograph 1 of/ }).click();
+    await page.getByRole("link", { name: /Request print/ }).click();
+    await expect(page).toHaveURL(/\/photo\/print\?photo=/);
+    await expect(page.getByRole("heading", { name: "Request a print" })).toBeVisible();
   });
 
   test("real clips play from their own file", async ({ page }) => {

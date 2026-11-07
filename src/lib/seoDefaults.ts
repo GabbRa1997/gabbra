@@ -55,7 +55,7 @@ export const SEO_PAGES: SeoPage[] = [
     path: "/contact",
     label: "Contact & Commissions",
     title: "Contact & Commissions",
-    description: "Commission enquiries for photography, FPV drone footage and film, plus prints and collaborations.",
+    description: "Commissions, collaborations and services for photography, FPV drone footage and film.",
   },
 ];
 

@@ -12,7 +12,7 @@ export default function Contact() {
       tint="#e6b980"
       eyebrow="Contact"
       title="Commission enquiries"
-      lead="For photography, FPV and film commissions, prints and collaborations."
+      lead="For commissions, collaborations and services across photography, FPV and film. Prints are ordered from the photographs themselves."
     >
       <div className="grid gap-16 md:grid-cols-[1.3fr_1fr]">
         <Suspense fallback={null}>

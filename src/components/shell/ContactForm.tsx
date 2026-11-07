@@ -4,8 +4,8 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { SITE } from "@/content/site";
 
-const TYPES = ["Photography", "FPV", "Film", "Print", "Collaboration", "Something else"];
-const FROM_QUERY: Record<string, string> = { print: "Print", photography: "Photography", fpv: "FPV", film: "Film" };
+const TYPES = ["Photography", "FPV", "Film", "Collaboration", "Something else"];
+const FROM_QUERY: Record<string, string> = { photography: "Photography", fpv: "FPV", film: "Film" };
 
 /**
  * Commission enquiries. Without a mail server there is nothing to hide, so the
